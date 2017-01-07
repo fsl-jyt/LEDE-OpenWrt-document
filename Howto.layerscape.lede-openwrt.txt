@@ -1,0 +1,108 @@
+	  How to Download/Configuration/Compile/Programmer
+	the LEDE(OpenWrt) firmware for Layerscape develop board
+(ls1012ardb,ls1043ardb,ls1046ardb,ls1088ardb,ls2088ardb,ls1021atwr)
+
+
+1. Download the LEDE(OpenWrt) source code:
+git clone https://github.com/lede-project/source.git
+cd source
+
+
+2. Configuration
+make menuconfig
+	Target System (NXP Layerscape)  --->
+		(X) NXP Layerscape
+	Subtarget (layerscape 64b boards)  --->
+		(X) layerscape 64b boards
+	Target Profile (Default Profile)  --->
+		(X) Default Profile		--it will build all of below develop board
+		( ) ls1012ardb-64b		--it will build specially develop board
+		( ) ls1043ardb-64b
+		( ) ls1046ardb-64b
+		( ) ls1088ardb-64b
+		( ) ls2088ardb-64b
+	Global build settings  --->
+		Binary stripping method (none)  --->
+			(X) none			--avoid be stripping of the ppfe firmware
+	Boot Loaders  --->
+		<*> uboot-layerscape-64b-ls1012ardb
+		<*> uboot-layerscape-64b-ls1043ardb
+		<*> uboot-layerscape-64b-ls1046ardb
+	Firmware  --->
+		<*> fman-layerscape-ls1043ardb
+		<*> fman-layerscape-ls1046ardb
+		<*> ppfe-ls1012ardb
+		<*> rcw-layerscape-ls1012ardb
+		<*> rcw-layerscape-ls1043ardb
+		<*> rcw-layerscape-ls1046ardb
+
+The ls2088ardb and ls1043ardb develop board have flash configuration conflict,
+if compile the ls2088ardb firmware, after above [make menuconfig], need a specially
+configure for kernel flash options:
+make kernel_menuconfig
+	Device Drivers  --->
+		<*> Memory Technology Device (MTD) support  --->
+			RAM/ROM/Flash chip drivers  --->
+				[*] Flash chip driver advanced configuration options
+					Flash cmd/query data swapping (NO)  --->
+						(X) NO
+
+
+3. Compile
+make -j20
+(according your host server performance to setting -jN parameter)
+ls -l bin/targets/layerscape/64b/
+
+
+4. Programmer
+--ls1012ardb : quadspi flash
+#switch bank1: i2c mw 0x24 0x7 0xfc; i2c mw 0x24 0x3 0xf4;
+#switch bank2: i2c mw 0x24 0x7 0xfc; i2c mw 0x24 0x3 0xf5;
+sf probe 0:0 && tftp 0xa0000000 tftpfolder/lede-layerscape-64b-ls1012ardb-squashfs-firmware.bin && protect off all && sf erase 0 $filesize && sf write 0xa0000000 0 $filesize;
+reset
+
+--ls1043ardb : NOR flash
+#switch bank: cpld reset altbank
+tftp a0000000 tftpfolder/lede-layerscape-64b-ls1043ardb-squashfs-firmware.bin && protect off all && erase 60000000 +4000000 && cp.b a0000000 60000000 $filesize
+reset
+
+--ls1046ardb : quadspi flash
+#switch bank: cpld reset altbank
+sf probe 0:0 && tftp 0xa0000000 tftpfolder/lede-layerscape-64b-ls1046ardb-squashfs-firmware.bin && sf erase 0 $filesize && sf write 0xa0000000 0 $filesize;
+reset
+
+--ls1088ardb : quadspi flash
+#switch bank0: i2c mw 66 50  0; i2c mw 66 10 20;i2c mw 66 10 21
+#switch bank1: i2c mw 66 50 20; i2c mw 66 10 20;i2c mw 66 10 21
+setenv loadaddr 0x90100000 && setenv fdtaddr 8f000000
+setenv wrtboot_mc_init 'sf probe 0:0 && sf read 0x80000000 300000 100000 && sf read 0x90000000 800000 0x100000 && fsl_mc start mc 0x80000000 0x90000000 && sf read 0x80000000 0x700000 0x100000 && fsl_mc apply dpl 0x80000000'
+setenv wrtboot_qspi_ext4rfs 'sf probe 0:0 && setenv bootargs root=/dev/mtdblock8 rootfstype=ext4 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=20c0000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),4M(mc),1M(dpl),1M(dpc),1M(dtb),5M(kernel),17M(ext4rfs),32M(user) && sf read $fdtaddr 0x900000 100000 && sf read $loadaddr 0xa00000 500000 && bootm $loadaddr - $fdtaddr'
+setenv bootcmd 'run wrtboot_mc_init; run wrtboot_qspi_ext4rfs'
+save
+sf probe 0:0 && tftp a0000000 tftpfolder/lede-layerscape-64b-ls1088ardb-squashfs-firmware.bin && sf erase 900000 +$filesize && sf write a0000000 900000 $filesize
+#full flash firmware(NOT upstream: https://github.com/fsl-jyt/source/tree/20161230_ls1088ardb-ls2088ardb-64b):
+#sf probe 0:0 && tftp a0000000 tftpfolder/lede-layerscape-64b-ls1088ardb-squashfs-firmware.bin && sf erase 0 +$filesize && sf write a0000000 0 $filesize
+reset
+
+--ls2088ardb : NOR flash
+#switch bank: qixis_reset altbank
+setenv addr_kernel 82000000 && setenv addr_fdt 8f000000
+setenv wrtboot_nor_rfs 'fsl_mc start mc 0x580300000 0x580800000 && fsl_mc apply dpl 0x580700000 && setenv bootargs root=/dev/mtdblock8 rootfstype=squashfs,jffs2 noinitrd console=ttyS1,115200 earlycon=uart8250,mmio,0x21c0600 mtdparts=580000000.nor:1M(rcw),1M(u-boot),1M(u-boot-env),4M(mc),1M(dpl),1M(dpc),1M(dtb),5M(kernel),17M(rootfs),32M(user),64M(otherbank) && cp.b 0x580900000 $addr_fdt 100000 && cp.b 0x580a00000 $addr_kernel 500000 && bootm $addr_kernel - $addr_fdt'
+setenv bootcmd 'run wrtboot_nor_rfs'
+save
+tftp a0000000 tftpfolder/lede-layerscape-64b-ls2088ardb-squashfs-firmware.bin-ok && protect off all && erase 580900000 +1700000 && cp.b a0000000 580900000 $filesize
+#full flash firmware(NOT upstream: https://github.com/fsl-jyt/source/tree/20161230_ls1088ardb-ls2088ardb-64b):
+#tftp a0000000 tftpfolder/lede-layerscape-64b-ls2088ardb-squashfs-firmware.bin && protect off all && erase 580000000 +2000000 && cp.b a0000000 580000000 $filesize
+reset
+
+--ls1021atwr : NOR flash
+(NOT upstream: https://github.com/fsl-jyt/source/tree/debug-20161208_ls1021atwr-full-flash)
+setenv wrtboot 'setenv bootargs root=/dev/mtdblock4 rootfstype=squashfs,jffs2 noinitrd console=ttyS0,115200 mtdparts=60000000.nor:1M(rcw),1M(u-boot),1M(dtb),5M(kernel),24M(rootfs),32M(user),64M(otherbank) && setenv loadaddr 82000000 && setenv fdtaddr 8f000000 && cp.b 60300000 $loadaddr 500000 && cp.b 60200000 $fdtaddr 100000 &&  bootm $loadaddr - $fdtaddr'
+save
+tftp a0000000 tftpfolder/lede-layerscape-32b-ls1021atwr-squashfs-firmware.bin && protect off all && erase 60000000 +2000000 && cp.b a0000000 60000000 $filesize
+
+
+5. Clean up work folder:
+make clean
+rm -rf .config tmp
+
