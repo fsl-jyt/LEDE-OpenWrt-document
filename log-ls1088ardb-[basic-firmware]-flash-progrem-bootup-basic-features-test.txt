@@ -1,0 +1,1033 @@
+U-Boot 2016.01 (Dec 29 2016 - 16:42:35 +0000)
+
+SoC:  LS1088E Version:1.0 (0x87030010)
+Clock Configuration:
+       CPU0(A53):1600 MHz  CPU1(A53):1600 MHz  CPU2(A53):1600 MHz
+       CPU3(A53):1600 MHz  CPU4(A53):1600 MHz  CPU5(A53):1600 MHz
+       CPU6(A53):1600 MHz  CPU7(A53):1600 MHz
+       Bus:      700  MHz  DDR:      2100 MT/s
+Reset Configuration Word (RCW):
+       00000000: 4000541c 00000040 00000000 00000000
+       00000010: 00000000 000a0000 00300000 00000000
+       00000020: 00a011a0 00002580 00000000 00000040
+       00000030: 0000005b 00000000 00002403 00000000
+       00000040: 00000000 00000000 00000000 00000000
+       00000050: 00000000 00000000 00000000 00000000
+       00000060: 00000000 00000000 00000011 000009e7
+       00000070: 44110000 00509555 00000000 00000000
+I2C:   ready
+DRAM:  Initializing DDR....using SPD
+Detected UDIMM 18ASF1G72AZ-2G3B1
+Address hashing enabled.
+6 GiB
+DDR    6 GiB (DDR4, 64-bit, CL=15, ECC on)
+       DDR Chip-Select Interleaving Mode: CS0+CS1
+core voltage not adjusted
+Waking secondary cores to start from fff12000
+All (8) cores are up.
+Using SERDES1 Protocol: 29 (0x1d)
+Using SERDES2 Protocol: 13 (0xd)
+NAND:  512 MiB
+MMC:   FSL_SDHC: 0
+SF: Detected S25FS512S_256K with page size 256 Bytes, erase size 256 KiB, total 64 MiB
+EEPROM: NXID v1
+PCIe1: Root Complex no link, regs @ 0x3400000
+PCIe2: Root Complex no link, regs @ 0x3500000
+PCIe3: Root Complex x1 gen1, regs @ 0x3600000
+PCI:
+     01:00.0    - 8086:107d - Network controller
+PCIe3: Bus 00 - 01
+In:    serial
+Out:   serial
+Err:   serial
+Model: Freescale Layerscape 1088a RDB Board
+Board: LS1088A-RDB, Board Arch: V1, Board version: B, boot from QSPI:1
+CPLD: v1.8
+SERDES1 Reference : Clock1 = 100MHz Clock2 = 156.25MHz
+SERDES2 Reference : Clock1 = 100MHz Clock2 = 100MHz
+SEC0: RNG instantiated
+SATA link 0 timeout.
+AHCI 0001.0301 32 slots 1 ports 6 Gbps 0x1 impl SATA mode
+flags: 64bit ncq pm clo only pmp fbss pio slum part ccc apst
+Found 0 device(s).
+SCSI:  Net:   SF: Detected S25FS512S_256K with page size 256 Bytes, erase size 256 KiB, total 64 MiB
+device 0 offset 0x300000, size 0x100000
+SF: 1048576 bytes @ 0x300000 Read: OK
+device 0 offset 0x800000, size 0x100000
+SF: 1048576 bytes @ 0x800000 Read: OK
+crc32+
+fsl-mc: Booting Management Complex ... SUCCESS
+fsl-mc: Management Complex booted (version: 10.0.2, boot status: 0x1)
+e1000: 00:15:17:8e:92:a4
+       DPMAC1@xgmii [PRIME], DPMAC2@xgmii, DPMAC3@qsgmii, DPMAC4@qsgmii, DPMAC5@qsgmii, DPMAC6@qsgmii, DPMAC7@qsgmii, DPMAC8@qsgmii, DPMAC9@qsgmii, DPMAC10@qsgmii, e1000#0
+Hit any key to stop autoboot:  0
+=> pri
+baudrate=115200
+bootargs=console=ttyS0,115200 root=/dev/ram0 earlycon=uart8250,mmio,0x21c0500ramdisk_size=0x2000000 default_hugepagesz=2m hugepagesz=2m hugepages=256
+bootcmd=run wrtboot_mc_init; run wrtboot_qspi_ext4rfs
+bootdelay=3
+eth10addr=00:15:17:8e:92:a4
+eth1addr=00:04:9F:04:77:C5
+eth2addr=00:04:9F:04:77:C6
+eth3addr=00:04:9F:04:77:C7
+eth4addr=00:04:9F:04:77:C8
+eth5addr=00:04:9F:04:77:C9
+eth6addr=00:04:9F:04:77:CA
+eth7addr=00:04:9F:04:77:CB
+eth8addr=00:04:9F:04:77:CC
+eth9addr=00:04:9F:04:77:CD
+ethact=DPMAC1@xgmii
+ethaddr=00:04:9F:04:77:C4
+ethprime=DPMAC1@xgmii
+fdt_high=0xa0000000
+fdtaddr=8f000000
+fdtcontroladdr=ffd0c680
+hwconfig=fsl_ddr:bank_intlv=auto
+initrd_high=0xffffffffffffffff
+ipaddr=10.193.20.244
+kernel_addr=0x100000
+kernel_load=0xa0000000
+kernel_size=0x2800000
+kernel_start=0x1100000
+loadaddr=0x90100000
+mcinitcmd=sf probe 0:0;sf read 0x80000000 0x300000 0x100000;sf read 0x80100000 0x800000 0x100000;fsl_mc start mc 0x80000000 0x80100000
+mcmemsize=0x70000000
+ramdisk_addr=0x800000
+ramdisk_size=0x2000000
+scsidevs=0
+serverip=10.192.208.142
+stderr=serial
+stdin=serial
+stdout=serial
+tobank0=i2c mw 66 50  0; i2c mw 66 10 20;i2c mw 66 10 21
+wrtboot_mc_init=sf probe 0:0 && sf read 0x80000000 300000 100000 && sf read 0x90000000 800000 0x100000 && fsl_mc start mc 0x80000000 0x90000000 && sf read 0x80000000 0x700000 0x100000 && fsl_mc apply dpl 0x80000000
+wrtboot_mmcp1_ext4rfs=sf probe 0:0 && setenv bootargs root=/dev/mmcblk0p1 rw rootdelay=3 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=20c0000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),4M(mc),1M(dpl),1M(dpc),1M(dtb),5M(kernel),17M(ext4rfs),32M(user) && sf read $fdtaddr 0x900000 100000 && sf read $loadaddr 0xa00000 500000 && bootm $loadaddr - $fdtaddr
+wrtboot_qspi_ext4rfs=sf probe 0:0 && setenv bootargs root=/dev/mtdblock8 rootfstype=ext4 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=20c0000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),4M(mc),1M(dpl),1M(dpc),1M(dtb),5M(kernel),17M(ext4rfs),32M(user) && sf read $fdtaddr 0x900000 100000 && sf read $loadaddr 0xa00000 500000 && bootm $loadaddr - $fdtaddr
+wrtboot_sda1_ext4rfs=sf probe 0:0 && setenv bootargs root=/dev/sda1 rw rootdelay=3 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=20c0000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),4M(mc),1M(dpl),1M(dpc),1M(dtb),5M(kernel),17M(ext4rfs),32M(user) && sf read $fdtaddr 0x900000 100000 && sf read $loadaddr 0xa00000 500000 && bootm $loadaddr - $fdtaddr
+wrtupdate= sf probe 0:0 && tftp 0xa0000000 <tftp_folder>/lede-layerscape-64b-ls1088ardb-squashfs-firmware.bin && sf erase 0 $filesize && sf write 0xa0000000 0 $filesize; reset
+
+Environment size: 2770/8188 bytes
+=> setenv ethact DPMAC7@qsgmii
+=> ping 10.192.208.142
+Using DPMAC7@qsgmii device
+host 10.192.208.142 is alive
+=> sf probe 0:0 && tftp a0000000 jyt/openwrt/test/20170103/lede-layerscape-64b-ls1088ardb-squashfs-firmware.bin && sf erase 900000 +$filesize && sf write a0000000 900000 $filesize
+SF: Detected S25FS512S_256K with page size 256 Bytes, erase size 256 KiB, total 64 MiB
+Using DPMAC7@qsgmii device
+TFTP from server 10.192.208.142; our IP address is 10.193.20.244
+Filename 'jyt/openwrt/test/20170103/lede-layerscape-64b-ls1088ardb-squashfs-firmware.bin'.
+Load address: 0xa0000000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ##################
+         6.7 MiB/s
+done
+Bytes transferred = 24117248 (1700000 hex)
+SF: 24117248 bytes @ 0x900000 Erased: OK
+device 0 offset 0x900000, size 0x1700000
+SF: 24117248 bytes @ 0x900000 Written: OK
+=> boot
+SF: Detected S25FS512S_256K with page size 256 Bytes, erase size 256 KiB, total 64 MiB
+device 0 offset 0x300000, size 0x100000
+SF: 1048576 bytes @ 0x300000 Read: OK
+device 0 offset 0x800000, size 0x100000
+SF: 1048576 bytes @ 0x800000 Read: OK
+fsl-mc: MC is already booted
+device 0 offset 0x700000, size 0x100000
+SF: 1048576 bytes @ 0x700000 Read: OK
+fsl-mc: Deploying data path layout ... SUCCESS
+SF: Detected S25FS512S_256K with page size 256 Bytes, erase size 256 KiB, total 64 MiB
+device 0 offset 0x900000, size 0x100000
+SF: 1048576 bytes @ 0x900000 Read: OK
+device 0 offset 0xa00000, size 0x500000
+SF: 5242880 bytes @ 0xa00000 Read: OK
+## Booting kernel from Legacy Image at 90100000 ...
+   Image Name:   ARM64 LEDE Linux-4.4.36
+   Created:      2017-01-03  15:00:08 UTC
+   Image Type:   AArch64 Linux Kernel Image (gzip compressed)
+   Data Size:    3281769 Bytes = 3.1 MiB
+   Load Address: 80080000
+   Entry Point:  80080000
+   Verifying Checksum ... OK
+## Flattened Device Tree blob at 8f000000
+   Booting using the fdt blob at 0x8f000000
+   Uncompressing Kernel Image ... OK
+   reserving fdt memory region: addr=80000000 size=10000
+   Loading Device Tree to 000000009fff9000, end 000000009ffff1d9 ... OK
+WARNING: fdt_fixup_stdout: could not read serial0 alias: FDT_ERR_NOTFOUND
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.4.36 (jyt@BP) (gcc version 5.4.0 (LEDE GCC 5.4.0 r1262+1089) ) #0 SMP Tue Jan 3 15:00:08 2017
+[    0.000000] Boot CPU: AArch64 Processor [410fd034]
+[    0.000000] Ignoring memory block 0x8080000000 - 0x8180000000
+[    0.000000] earlycon: Early serial console at MMIO 0x21c0500 (options '')
+[    0.000000] bootconsole [uart0] enabled
+[    0.000000] efi: Getting EFI parameters from FDT:
+[    0.000000] efi: UEFI not found.
+[    0.000000] PERCPU: Embedded 15 pages/cpu @ffffffc07ff65000 s23808 r8192 d29440 u61440
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: enabling workaround for ARM erratum 845719
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 516096
+[    0.000000] Kernel command line: root=/dev/mtdblock8 rootfstype=ext4 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=20c0000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),4M(mc),1M(dpl),1M(dpc),1M(dtb),5M(kernel),17M(ext4rfs),32M(user)
+[    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.000000] software IO TLB [mem 0xf9c00000-0xfdc00000] (64MB) mapped at [ffffffc079c00000-ffffffc07dbfffff]
+[    0.000000] Memory: 1986120K/2097152K available (4888K kernel code, 286K rwdata, 2168K rodata, 256K init, 815K bss, 111032K reserved, 0K cma-reserved)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vmalloc : 0xffffff8000000000 - 0xffffffbdbfff0000   (   246 GB)
+[    0.000000]     vmemmap : 0xffffffbdc0000000 - 0xffffffbfc0000000   (     8 GB maximum)
+[    0.000000]               0xffffffbdc0000000 - 0xffffffbdc2000000   (    32 MB actual)
+[    0.000000]     fixed   : 0xffffffbffabfd000 - 0xffffffbffac00000   (    12 KB)
+[    0.000000]     PCI I/O : 0xffffffbffae00000 - 0xffffffbffbe00000   (    16 MB)
+[    0.000000]     modules : 0xffffffbffc000000 - 0xffffffc000000000   (    64 MB)
+[    0.000000]     memory  : 0xffffffc000000000 - 0xffffffc080000000   (  2048 MB)
+[    0.000000]       .init : 0xffffffc000767000 - 0xffffffc0007a7000   (   256 KB)
+[    0.000000]       .text : 0xffffffc000080000 - 0xffffffc000766384   (  7065 KB)
+[    0.000000]       .data : 0xffffffc0007b8000 - 0xffffffc0007ff800   (   286 KB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=8, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000]  CONFIG_RCU_FANOUT set to non-default value of 32
+[    0.000000]  RCU restricting CPUs from NR_CPUS=24 to nr_cpu_ids=8.
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=8
+[    0.000000] NR_IRQS:64 nr_irqs:64 0
+[    0.000000] GIC: Using split EOI/Deactivate mode
+[    0.000000] ITS: /interrupt-controller@6000000/gic-its@6020000
+[    0.000000] ITS: allocated 65536 Devices @f9480000 (psz 64K, shr 0)
+[    0.000000] ITS: using cache flushing for cmd queue
+[    0.000000] GIC: using LPI property table @0x00000000f9420000
+[    0.000000] ITS: Allocated 1792 chunks for LPIs
+[    0.000000] CPU0: found redistributor 0 region 0:0x0000000006100000
+[    0.000000] CPU0: using LPI pending table @0x00000000f9430000
+[    0.000000] GIC: using cache flushing for LPI property table
+[    0.000000] Architected cp15 timer(s) running at 25.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x5c40939b5, max_idle_ns: 440795202646 ns
+[    0.000002] sched_clock: 56 bits at 25MHz, resolution 40ns, wraps every 4398046511100ns
+[    0.008108] Calibrating delay loop (skipped), value calculated using timer frequency.. 50.00 BogoMIPS (lpj=250000)
+[    0.018542] pid_max: default: 32768 minimum: 301
+[    0.023231] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.029987] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.037513] EFI services will not be available.
+[    0.042094] ASID allocator initialised with 65536 entries
+[    0.047771] PCI/MSI: /interrupt-controller@6000000/gic-its@6020000 domain created
+[    0.055336] Platform MSI: /interrupt-controller@6000000/gic-its@6020000 domain created
+[    0.063536] Detected VIPT I-cache on CPU1
+[    0.063549] CPU1: found redistributor 1 region 0:0x0000000006120000
+[    0.063564] CPU1: using LPI pending table @0x00000000f95c0000
+[    0.063577] CPU1: Booted secondary processor [410fd034]
+[    0.063686] Detected VIPT I-cache on CPU2
+[    0.063695] CPU2: found redistributor 2 region 0:0x0000000006140000
+[    0.063710] CPU2: using LPI pending table @0x00000000f95f0000
+[    0.063723] CPU2: Booted secondary processor [410fd034]
+[    0.063826] Detected VIPT I-cache on CPU3
+[    0.063836] CPU3: found redistributor 3 region 0:0x0000000006160000
+[    0.063851] CPU3: using LPI pending table @0x00000000f9620000
+[    0.063864] CPU3: Booted secondary processor [410fd034]
+[    0.063974] Detected VIPT I-cache on CPU4
+[    0.063989] CPU4: found redistributor 100 region 0:0x0000000006180000
+[    0.064006] CPU4: using LPI pending table @0x00000000f9650000
+[    0.064027] CPU4: Booted secondary processor [410fd034]
+[    0.064143] Detected VIPT I-cache on CPU5
+[    0.064153] CPU5: found redistributor 101 region 0:0x00000000061a0000
+[    0.064169] CPU5: using LPI pending table @0x00000000f9680000
+[    0.064182] CPU5: Booted secondary processor [410fd034]
+[    0.064295] Detected VIPT I-cache on CPU6
+[    0.064305] CPU6: found redistributor 102 region 0:0x00000000061c0000
+[    0.064321] CPU6: using LPI pending table @0x00000000f96b0000
+[    0.064334] CPU6: Booted secondary processor [410fd034]
+[    0.064446] Detected VIPT I-cache on CPU7
+[    0.064457] CPU7: found redistributor 103 region 0:0x00000000061e0000
+[    0.064472] CPU7: using LPI pending table @0x00000000f96d0000
+[    0.064486] CPU7: Booted secondary processor [410fd034]
+[    0.064514] Brought up 8 CPUs
+[    0.217939] SMP: Total of 8 processors activated.
+[    0.222675] CPU features: detected feature: GIC system register CPU interface
+[    0.229868] CPU: All CPU(s) started at EL2
+[    0.234006] alternatives: patching kernel code
+[    0.239996] DMI not present or invalid.
+[    0.243955] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.253919] atomic64_test: passed
+[    0.257574] NET: Registered protocol family 16
+[    0.262461] fsl-mc bus type registered
+[    0.266287] MC object device driver fsl_mc_dprc registered
+[    0.271840] MC object device driver fsl_mc_allocator registered
+[    0.277832] fsl-mc MSI: /interrupt-controller@6000000/gic-its@6020000 domain created
+[    0.285723] vdso: 2 pages (1 code @ ffffffc0007bd000, 1 data @ ffffffc0007bc000)
+[    0.293268] DMA: preallocated 256 KiB pool for atomic allocations
+[    0.299441] Serial: AMBA PL011 UART driver
+[    0.306332] fsl_mc_bus 80c000000.fsl-mc: Root MC bus device probed
+[    0.313068] fsl_mc_bus 80c000000.fsl-mc: Freescale Management Complex Firmware version: 10.0.2
+[    0.368722] fsl_mc_dprc dprc.1: DPRC device bound to driver
+[    0.404690] ACPI: Interpreter disabled.
+[    0.408769] SCSI subsystem initialized
+[    0.412757] usbcore: registered new interface driver usbfs
+[    0.418328] usbcore: registered new interface driver hub
+[    0.423713] usbcore: registered new device driver usb
+[    0.429017] i2c i2c-0: IMX I2C adapter registered
+[    0.433756] i2c i2c-0: can't use DMA
+[    0.437552] dmi: Firmware registration failed.
+[    0.442102] No BMan portals available!
+[    0.445997] QMan: Allocated lookup table at ffffff8000311000, entry count 65537
+[    0.453430] No QMan portals available!
+[    0.457298] No USDPAA memory, no 'fsl,usdpaa-mem' in device-tree
+[    0.463768] clocksource: Switched to clocksource arch_sys_counter
+[    0.470052] pnp: PnP ACPI: disabled
+[    0.474034] NET: Registered protocol family 2
+[    0.478658] TCP established hash table entries: 16384 (order: 5, 131072 bytes)
+[    0.486039] TCP bind hash table entries: 16384 (order: 6, 262144 bytes)
+[    0.492880] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.499509] UDP hash table entries: 1024 (order: 3, 32768 bytes)
+[    0.505596] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes)
+[    0.512225] NET: Registered protocol family 1
+[    0.516743] RPC: Registered named UNIX socket transport module.
+[    0.522704] RPC: Registered udp transport module.
+[    0.527443] RPC: Registered tcp transport module.
+[    0.532177] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.539189] futex hash table entries: 2048 (order: 6, 262144 bytes)
+[    0.545573] No memory allocated for crashlog
+[    0.553045] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.559301] jffs2: version 2.2 (NAND) (SUMMARY) (LZMA) (RTIME) (CMODE_PRIORITY) (c) 2001-2006 Red Hat, Inc.
+[    0.569819] io scheduler noop registered (default)
+[    0.574880] PCI host bridge /pcie@3400000 ranges:
+[    0.579624]    IO 0x2000010000..0x200001ffff -> 0x00000000
+[    0.585157]   MEM 0x2040000000..0x207fffffff -> 0x40000000
+[    0.590755] layerscape-pcie 3400000.pcie: PCI host bridge to bus 0000:00
+[    0.597513] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.603040] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+[    0.609273] pci_bus 0000:00: root bus resource [mem 0x2040000000-0x207fffffff] (bus address [0x40000000-0x7fffffff])
+[    0.620111] pci 0000:00:00.0: BAR 1: assigned [mem 0x2040000000-0x2043ffffff]
+[    0.627310] pci 0000:00:00.0: BAR 0: assigned [mem 0x2044000000-0x2044ffffff]
+[    0.634506] pci 0000:00:00.0: BAR 6: assigned [mem 0x2045000000-0x2045ffffff pref]
+[    0.642135] pci 0000:00:00.0: PCI bridge to [bus 01]
+[    0.653928] PCI host bridge /pcie@3500000 ranges:
+[    0.658667]    IO 0x2800010000..0x280001ffff -> 0x00000000
+[    0.664199]   MEM 0x2840000000..0x287fffffff -> 0x40000000
+[    0.669779] layerscape-pcie 3500000.pcie: PCI host bridge to bus 0001:00
+[    0.676538] pci_bus 0001:00: root bus resource [bus 00-ff]
+[    0.682064] pci_bus 0001:00: root bus resource [io  0x10000-0x1ffff] (bus address [0x0000-0xffff])
+[    0.691099] pci_bus 0001:00: root bus resource [mem 0x2840000000-0x287fffffff] (bus address [0x40000000-0x7fffffff])
+[    0.701899] pci 0001:00:00.0: BAR 1: assigned [mem 0x2840000000-0x2843ffffff]
+[    0.709097] pci 0001:00:00.0: BAR 0: assigned [mem 0x2844000000-0x2844ffffff]
+[    0.716292] pci 0001:00:00.0: BAR 6: assigned [mem 0x2845000000-0x2845ffffff pref]
+[    0.723925] pci 0001:00:00.0: PCI bridge to [bus 01]
+[    0.729084] PCI host bridge /pcie@3600000 ranges:
+[    0.733828]    IO 0x3000010000..0x300001ffff -> 0x00000000
+[    0.739355]   MEM 0x3040000000..0x307fffffff -> 0x40000000
+[    0.744939] layerscape-pcie 3600000.pcie: PCI host bridge to bus 0002:00
+[    0.751691] pci_bus 0002:00: root bus resource [bus 00-ff]
+[    0.757225] pci_bus 0002:00: root bus resource [io  0x20000-0x2ffff] (bus address [0x0000-0xffff])
+[    0.766261] pci_bus 0002:00: root bus resource [mem 0x3040000000-0x307fffffff] (bus address [0x40000000-0x7fffffff])
+[    0.778081] pci 0002:01:00.0: disabling ASPM on pre-1.1 PCIe device.  You can enable it with 'pcie_aspm=force'
+[    0.788206] pci 0002:00:00.0: BAR 1: assigned [mem 0x3040000000-0x3043ffffff]
+[    0.795405] pci 0002:00:00.0: BAR 0: assigned [mem 0x3044000000-0x3044ffffff]
+[    0.802596] pci 0002:00:00.0: BAR 6: assigned [mem 0x3045000000-0x3045ffffff pref]
+[    0.810229] pci 0002:00:00.0: BAR 8: assigned [mem 0x3046000000-0x30460fffff]
+[    0.817426] pci 0002:00:00.0: BAR 7: assigned [io  0x20000-0x20fff]
+[    0.823743] pci 0002:01:00.0: BAR 0: assigned [mem 0x3046000000-0x304601ffff]
+[    0.830953] pci 0002:01:00.0: BAR 1: assigned [mem 0x3046020000-0x304603ffff]
+[    0.838166] pci 0002:01:00.0: BAR 6: assigned [mem 0x3046040000-0x304605ffff pref]
+[    0.845799] pci 0002:01:00.0: BAR 2: assigned [io  0x20000-0x2001f]
+[    0.852128] pci 0002:00:00.0: PCI bridge to [bus 01]
+[    0.857131] pci 0002:00:00.0:   bridge window [io  0x20000-0x20fff]
+[    0.863446] pci 0002:00:00.0:   bridge window [mem 0x3046000000-0x30460fffff]
+[    0.870951] Serial: 8250/16550 driver, 2 ports, IRQ sharing disabled
+[    0.877590] console [ttyS0] disabled
+[    0.881208] 21c0500.serial: ttyS0 at MMIO 0x21c0500 (irq = 7, base_baud = 21875000) is a 16550A
+[    0.889999] console [ttyS0] enabled
+[    0.889999] console [ttyS0] enabled
+[    0.896991] bootconsole [uart0] disabled
+[    0.896991] bootconsole [uart0] disabled
+[    0.904986] 21c0600.serial: ttyS1 at MMIO 0x21c0600 (irq = 7, base_baud = 21875000) is a 16550A
+[    0.913952] Unable to detect cache hierarchy from DT for CPU 0
+[    0.921964] loop: module loaded
+[    0.925576] fsl-quadspi 20c0000.quadspi: s25fl512s (65536 Kbytes)
+[    0.931695] fsl-quadspi 20c0000.quadspi: s25fl512s (65536 Kbytes)
+[    0.937819] 10 cmdlinepart partitions found on MTD device 20c0000.quadspi
+[    0.944609] Creating 10 MTD partitions on "20c0000.quadspi":
+[    0.950267] 0x000000000000-0x000000100000 : "rcw"
+[    0.955233] 0x000000100000-0x000000200000 : "u-boot"
+[    0.960435] 0x000000200000-0x000000300000 : "u-boot-env"
+[    0.965999] 0x000000300000-0x000000700000 : "mc"
+[    0.970886] 0x000000700000-0x000000800000 : "dpl"
+[    0.975892] 0x000000800000-0x000000900000 : "dpc"
+[    0.980847] 0x000000900000-0x000000a00000 : "dtb"
+[    0.985828] 0x000000a00000-0x000000f00000 : "kernel"
+[    0.991053] 0x000000f00000-0x000002000000 : "ext4rfs"
+[    0.996363] 0x000002000000-0x000004000000 : "user"
+[    1.001408] 10 cmdlinepart partitions found on MTD device 20c0000.quadspi
+[    1.008194] Creating 10 MTD partitions on "20c0000.quadspi":
+[    1.013850] 0x000000000000-0x000000100000 : "rcw"
+[    1.018803] 0x000000100000-0x000000200000 : "u-boot"
+[    1.024023] 0x000000200000-0x000000300000 : "u-boot-env"
+[    1.029582] 0x000000300000-0x000000700000 : "mc"
+[    1.034455] 0x000000700000-0x000000800000 : "dpl"
+[    1.039412] 0x000000800000-0x000000900000 : "dpc"
+[    1.044370] 0x000000900000-0x000000a00000 : "dtb"
+[    1.049326] 0x000000a00000-0x000000f00000 : "kernel"
+[    1.054553] 0x000000f00000-0x000002000000 : "ext4rfs"
+[    1.059865] 0x000002000000-0x000004000000 : "user"
+[    1.065321] libphy: Fixed MDIO Bus: probed
+[    1.069535] libphy: Freescale XGMAC MDIO Bus: probed
+[    1.075938] libphy: Freescale XGMAC MDIO Bus: probed
+[    1.082035] Freescale FM module, FMD API version 21.1.0
+[    1.087313] Freescale FM Ports module
+[    1.090970] fsl_mac: fsl_mac: FSL FMan MAC API based driver
+[    1.096583] fsl_dpa: FSL DPAA Ethernet driver
+[    1.100962] fsl_advanced: FSL DPAA Advanced drivers:
+[    1.105926] fsl_proxy: FSL DPAA Proxy initialization driver
+[    1.111523] fsl_dpa_shared: FSL DPAA Shared Ethernet driver
+[    1.117124] fsl_dpa_macless: FSL DPAA MACless Ethernet driver
+[    1.122894] fsl_oh: FSL FMan Offline Parsing port driver
+[    1.128275] i2c /dev entries driver
+[    1.132399] i2c i2c-0: Added multiplexed i2c bus 1
+[    1.137282] i2c i2c-0: Added multiplexed i2c bus 2
+[    1.142195] i2c i2c-0: Added multiplexed i2c bus 3
+[    1.147156] i2c i2c-0: Added multiplexed i2c bus 4
+[    1.152028] i2c i2c-0: Added multiplexed i2c bus 5
+[    1.156901] i2c i2c-0: Added multiplexed i2c bus 6
+[    1.161770] i2c i2c-0: Added multiplexed i2c bus 7
+[    1.166644] i2c i2c-0: Added multiplexed i2c bus 8
+[    1.171429] pca954x 0-0077: registered 8 multiplexed busses for I2C mux pca9547
+[    1.178866] sdhci: Secure Digital Host Controller Interface driver
+[    1.185043] sdhci: Copyright(c) Pierre Ossman
+[    1.189395] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.196140] sdhci-esdhc 2140000.esdhc: No vmmc regulator found
+[    1.201966] sdhci-esdhc 2140000.esdhc: No vqmmc regulator found
+[    1.253777] mmc0: SDHCI controller on 2140000.esdhc [2140000.esdhc] using ADMA 64-bit
+[    1.263951] /dev/dprc.1 driver registered
+[    1.275294] ce_paddr=0x818080000, ci_paddr=0x81c080000, portalid=8, prios=8
+[    1.282249] ce_size=0x1000, ci_size=0x1000
+[    1.286887] fsl_dpio_drv dpio.8: dpio: probed object 8
+[    1.292018] fsl_dpio_drv dpio.8:    receives_notifications = 1
+[    1.297850] fsl_dpio_drv dpio.8:    has_irq = 1
+[    1.305425] ce_paddr=0x818070000, ci_paddr=0x81c070000, portalid=7, prios=8
+[    1.312379] ce_size=0x1000, ci_size=0x1000
+[    1.317005] fsl_dpio_drv dpio.7: dpio: probed object 7
+[    1.322137] fsl_dpio_drv dpio.7:    receives_notifications = 1
+[    1.327966] fsl_dpio_drv dpio.7:    has_irq = 1
+[    1.335536] ce_paddr=0x818060000, ci_paddr=0x81c060000, portalid=6, prios=8
+[    1.342490] ce_size=0x1000, ci_size=0x1000
+[    1.347115] fsl_dpio_drv dpio.6: dpio: probed object 6
+[    1.348769] mmc0: MAN_BKOPS_EN bit is not set
+[    1.356597] fsl_dpio_drv dpio.6:    receives_notifications = 1
+[    1.359760] mmc0: new high speed MMC card at address 0001
+[    1.359924] mmcblk0: mmc0:0001 P1XXXX 3.60 GiB
+[    1.360005] mmcblk0boot0: mmc0:0001 P1XXXX partition 1 16.0 MiB
+[    1.360088] mmcblk0boot1: mmc0:0001 P1XXXX partition 2 16.0 MiB
+[    1.360169] mmcblk0rpmb: mmc0:0001 P1XXXX partition 3 128 KiB
+[    1.389902] fsl_dpio_drv dpio.6:    has_irq = 1
+[    1.397498] ce_paddr=0x818050000, ci_paddr=0x81c050000, portalid=5, prios=8
+[    1.404463] ce_size=0x1000, ci_size=0x1000
+[    1.409096] fsl_dpio_drv dpio.5: dpio: probed object 5
+[    1.414232] fsl_dpio_drv dpio.5:    receives_notifications = 1
+[    1.420058] fsl_dpio_drv dpio.5:    has_irq = 1
+[    1.427633] ce_paddr=0x818040000, ci_paddr=0x81c040000, portalid=4, prios=8
+[    1.434593] ce_size=0x1000, ci_size=0x1000
+[    1.439212] fsl_dpio_drv dpio.4: dpio: probed object 4
+[    1.444348] fsl_dpio_drv dpio.4:    receives_notifications = 1
+[    1.450174] fsl_dpio_drv dpio.4:    has_irq = 1
+[    1.457746] ce_paddr=0x818030000, ci_paddr=0x81c030000, portalid=3, prios=8
+[    1.464705] ce_size=0x1000, ci_size=0x1000
+[    1.469324] fsl_dpio_drv dpio.3: dpio: probed object 3
+[    1.474461] fsl_dpio_drv dpio.3:    receives_notifications = 1
+[    1.480286] fsl_dpio_drv dpio.3:    has_irq = 1
+[    1.487860] ce_paddr=0x818020000, ci_paddr=0x81c020000, portalid=2, prios=8
+[    1.494820] ce_size=0x1000, ci_size=0x1000
+[    1.499439] fsl_dpio_drv dpio.2: dpio: probed object 2
+[    1.504574] fsl_dpio_drv dpio.2:    receives_notifications = 1
+[    1.510400] fsl_dpio_drv dpio.2:    has_irq = 1
+[    1.517975] ce_paddr=0x818010000, ci_paddr=0x81c010000, portalid=1, prios=8
+[    1.524934] ce_size=0x1000, ci_size=0x1000
+[    1.529554] fsl_dpio_drv dpio.1: dpio: probed object 1
+[    1.534691] fsl_dpio_drv dpio.1:    receives_notifications = 1
+[    1.540517] fsl_dpio_drv dpio.1:    has_irq = 1
+[    1.546084] MC object device driver fsl_dpio_drv registered
+[    1.551775] No fsl,qman node
+[    1.554732] Freescale USDPAA process driver
+[    1.558907] fsl-usdpaa: no region found
+[    1.562736] Freescale USDPAA process IRQ driver
+[    1.581392] fsl_dpaa2_eth device(s) have all-zero hwaddr, replaced with random
+[    1.593546] fsl_dpaa2_eth dpni.1: Probed interface ni1
+[    1.598878] MC object device driver fsl_dpaa2_eth registered
+[    1.606076] dpaa2_mac dpmac.10: Using DPMAC API 3.2
+[    1.612609] dpaa2_mac dpmac.10: Registered fixed PHY.
+[    1.620835] dpaa2_mac dpmac.9: Registered fixed PHY.
+[    1.628969] dpaa2_mac dpmac.8: Registered fixed PHY.
+[    1.637102] dpaa2_mac dpmac.7: Registered fixed PHY.
+[    1.645228] dpaa2_mac dpmac.6: Registered fixed PHY.
+[    1.653362] dpaa2_mac dpmac.5: Registered fixed PHY.
+[    1.661490] dpaa2_mac dpmac.4: Registered fixed PHY.
+[    1.669617] dpaa2_mac dpmac.3: Registered fixed PHY.
+[    1.677743] dpaa2_mac dpmac.2: Registered fixed PHY.
+[    1.685870] dpaa2_mac dpmac.1: Registered fixed PHY.
+[    1.690843] MC object device driver dpaa2_mac registered
+[    1.696176] MC object device driver dpaa2_evb registered
+[    1.701502] MC object device driver dpaa2_ethsw registered
+[    1.707293] NET: Registered protocol family 10
+[    1.712136] NET: Registered protocol family 17
+[    1.716594] bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+[    1.729200] 8021q: 802.1Q VLAN Support v1.8
+[    1.733746] fsl_generic: FSL DPAA Generic Ethernet driver
+[    1.970122] EXT4-fs (mtdblock8): mounted filesystem without journal. Opts: (null)
+[    1.977620] VFS: Mounted root (ext4 filesystem) readonly on device 31:8.
+[    1.984424] Freeing unused kernel memory: 256K (ffffffc000767000 - ffffffc0007a7000)
+[    1.992171] Freeing alternatives memory: 48K (ffffffc0007a7000 - ffffffc0007b3000)
+[    4.772490] init: Console is alive
+[    6.413214] pps_core: LinuxPPS API ver. 1 registered
+[    6.418183] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    6.434106] PTP clock support registered
+[    6.865877] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
+[    6.871364] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 1
+[    6.879097] xhci-hcd xhci-hcd.0.auto: hcc params 0x0220f66d hci version 0x100 quirks 0x00010010
+[    6.887816] xhci-hcd xhci-hcd.0.auto: irq 18, io mem 0x03100000
+[    6.893947] hub 1-0:1.0: USB hub found
+[    6.897698] hub 1-0:1.0: 1 port detected
+[    6.901697] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
+[    6.907184] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 2
+[    6.914860] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[    6.923110] hub 2-0:1.0: USB hub found
+[    6.926867] hub 2-0:1.0: 1 port detected
+[    6.930882] xhci-hcd xhci-hcd.1.auto: xHCI Host Controller
+[    6.936381] xhci-hcd xhci-hcd.1.auto: new USB bus registered, assigned bus number 3
+[    6.944110] xhci-hcd xhci-hcd.1.auto: hcc params 0x0220f66d hci version 0x100 quirks 0x00010010
+[    6.952818] xhci-hcd xhci-hcd.1.auto: irq 19, io mem 0x03110000
+[    6.958912] hub 3-0:1.0: USB hub found
+[    6.962664] hub 3-0:1.0: 1 port detected
+[    6.966662] xhci-hcd xhci-hcd.1.auto: xHCI Host Controller
+[    6.972144] xhci-hcd xhci-hcd.1.auto: new USB bus registered, assigned bus number 4
+[    6.979820] usb usb4: We don't know the algorithms for LPM for this host, disabling LPM.
+[    6.988078] hub 4-0:1.0: USB hub found
+[    6.991828] hub 4-0:1.0: 1 port detected
+[    7.002983] usbcore: registered new interface driver usb-storage
+[    7.012318] init: - preinit -
+[    7.839364] random: jshn: uninitialized urandom read (4 bytes read, 1 bits of entropy available)
+[    7.870089] random: jshn: uninitialized urandom read (4 bytes read, 1 bits of entropy available)
+Press the [f] key and hit [enter] to enter failsafe mode
+Press the [1], [2], [3] or [4] key and hit [enter] to select the debug level
+[   10.137629] mount_root: mounting /dev/root
+[   10.626732] random: nonblocking pool is initialized
+[   12.568118] EXT4-fs (mtdblock8): re-mounted. Opts: (null)
+[   12.573949] urandom-seed: Seed file not found (/etc/urandom.seed)
+[   13.052584] procd: - early -
+[   13.709005] procd: - ubus -
+[   14.117341] procd: - init -
+Please press Enter to activate this console.
+[   14.341962] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+[   14.347804] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[   14.354094] e1000e 0002:01:00.0: Interrupt Throttling Rate (ints/sec) set to dynamic conservative mode
+[   14.528783] e1000e 0002:01:00.0 eth0: (PCI Express:2.5GT/s:Width x1) 00:15:17:8e:92:a4
+[   14.536703] e1000e 0002:01:00.0 eth0: Intel(R) PRO/1000 Network Connection
+[   14.543653] e1000e 0002:01:00.0 eth0: MAC: 1, PHY: 4, PBA No: D50858-004
+[   38.093783] e1000e 0002:01:00.0 eth0: MSI interrupt test failed, using legacy interrupt.
+[   38.102337] 8021q: adding VLAN 0 to HW filter on device eth0
+[   38.108366] device eth0 entered promiscuous mode
+[   38.113638] IPv6: ADDRCONF(NETDEV_UP): br-lan: link is not ready
+
+
+
+BusyBox v1.25.1 () built-in shell (ash)
+
+     _________
+    /        /\      _    ___ ___  ___
+   /  LE    /  \    | |  | __|   \| __|
+  /    DE  /    \   | |__| _|| |) | _|
+ /________/  LE  \  |____|___|___/|___|                      lede-project.org
+ \        \   DE /
+  \    LE  \    /  -----------------------------------------------------------
+   \  DE    \  /    Reboot (CURRENT, r1262+1217-270dd02)
+    \________\/    -----------------------------------------------------------
+
+=== WARNING! =====================================
+There is no root password defined on this device!
+Use the "passwd" command to set up a new password
+in order to prevent unauthorized SSH logins.
+--------------------------------------------------
+root@lede:/# ifconfig
+br-lan    Link encap:Ethernet  HWaddr 00:15:17:8E:92:A4
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fd19:6c7e:4e44::1/60 Scope:Global
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+eth0      Link encap:Ethernet  HWaddr 00:15:17:8E:92:A4
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:102 Memory:3046000000-3046020000
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:16 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:16 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1
+          RX bytes:1264 (1.2 KiB)  TX bytes:1264 (1.2 KiB)
+
+root@lede:/# ifconfig -a
+br-lan    Link encap:Ethernet  HWaddr 00:15:17:8E:92:A4
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fd19:6c7e:4e44::1/60 Scope:Global
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+eth0      Link encap:Ethernet  HWaddr 00:15:17:8E:92:A4
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:102 Memory:3046000000-3046020000
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:16 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:16 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1
+          RX bytes:1264 (1.2 KiB)  TX bytes:1264 (1.2 KiB)
+
+ni1       Link encap:Ethernet  HWaddr C6:26:ED:D0:FB:AF
+          BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+root@lede:/# ifconfig ni1 10.193.20.244
+[   66.483030] fsl_dpaa2_eth dpni.1 ni1: Link Event: state up
+[   66.488529] fsl_dpaa2_eth dpni.1 ni1: Multicast addr count reached 2, max allowed is 0; forcing promisc
+[   66.499257] fsl_dpaa2_eth dpni.1 ni1: Multicast addr count reached 3, max allowed is 0; forcing promisc
+[   66.509285] fsl_dpaa2_eth dpni.1 ni1: Multicast addr count reached 4, max allowed is 0; forcing promisc
+root@lede:/# [   68.263792] fsl_dpaa2_eth dpni.1 ni1: Multicast addr count reached 5, max allowed is 0; forcing promisc
+
+root@lede:/# ifconfig
+br-lan    Link encap:Ethernet  HWaddr 00:15:17:8E:92:A4
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fd19:6c7e:4e44::1/60 Scope:Global
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+eth0      Link encap:Ethernet  HWaddr 00:15:17:8E:92:A4
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:102 Memory:3046000000-3046020000
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:32 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:32 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1
+          RX bytes:2528 (2.4 KiB)  TX bytes:2528 (2.4 KiB)
+
+ni1       Link encap:Ethernet  HWaddr C6:26:ED:D0:FB:AF
+          inet addr:10.193.20.244  Bcast:10.255.255.255  Mask:255.0.0.0
+          inet6 addr: fe80::c426:edff:fed0:fbaf/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:7 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:818 (818.0 B)
+
+root@lede:/# ping [   78.211995] fsl_dpaa2_eth dpni.1 ni1: Link Event: state down
+ 10.193.20.24[   82.212420] fsl_dpaa2_eth dpni.1 ni1: Link Event: state up                                                                                106
+PING 10.193.20106 (10.193.78.138): 56 data bytes
+^C
+--- 10.193.20106 ping statistics ---
+2 packets transmitted, 0 packets received, 100% packet loss
+root@lede:/#
+root@lede:/#
+root@lede:/# ping  10.193.20.106
+PING 10.193.20.106 (10.193.20.106): 56 data bytes
+64 bytes from 10.193.20.106: seq=0 ttl=64 time=0.212 ms
+64 bytes from 10.193.20.106: seq=1 ttl=64 time=0.103 ms
+64 bytes from 10.193.20.106: seq=2 ttl=64 time=0.102 ms
+^C
+--- 10.193.20.106 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.102/0.139/0.212 ms
+root@lede:/# ifconfig ni0 down
+ifconfig: SIOCGIFFLAGS: No such device
+root@lede:/# ifconfig ni1 down
+[  100.888086] fsl_dpaa2_eth dpni.1 ni1: Multicast addr count reached 5, max allowed is 0; forcing promisc
+[  100.901349] fsl_dpaa2_eth dpni.1 ni1: Link Event: state down
+root@lede:/#
+root@lede:/#
+root@lede:/# [  125.304802] e1000e: eth0 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
+[  125.312563] br-lan: port 1(eth0) entered forwarding state
+[  125.317977] br-lan: port 1(eth0) entered forwarding state
+[  125.323552] IPv6: ADDRCONF(NETDEV_CHANGE): br-lan: link becomes ready
+[  127.313772] br-lan: port 1(eth0) entered forwarding state
+
+root@lede:/#
+root@lede:/# ifconfig br-lan 10.193.20.244
+root@lede:/# ifconfig
+br-lan    Link encap:Ethernet  HWaddr 00:15:17:8E:92:A4
+          inet addr:10.193.20.244  Bcast:10.255.255.255  Mask:255.0.0.0
+          inet6 addr: fd19:6c7e:4e44::1/60 Scope:Global
+          inet6 addr: fe80::215:17ff:fe8e:92a4/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:242 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:17728 (17.3 KiB)  TX bytes:896 (896.0 B)
+
+eth0      Link encap:Ethernet  HWaddr 00:15:17:8E:92:A4
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:452 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:42234 (41.2 KiB)  TX bytes:1172 (1.1 KiB)
+          Interrupt:102 Memory:3046000000-3046020000
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:80 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:80 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1
+          RX bytes:6320 (6.1 KiB)  TX bytes:6320 (6.1 KiB)
+
+root@lede:/# ping  10.193.20.106
+PING 10.193.20.106 (10.193.20.106): 56 data bytes
+64 bytes from 10.193.20.106: seq=0 ttl=64 time=0.327 ms
+64 bytes from 10.193.20.106: seq=1 ttl=64 time=0.149 ms
+64 bytes from 10.193.20.106: seq=2 ttl=64 time=0.196 ms
+^C
+--- 10.193.20.106 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.149/0.224/0.327 ms
+root@lede:/#
+root@lede:/#
+root@lede:/# cat /proc/interrupts
+           CPU0       CPU1       CPU2       CPU3       CPU4       CPU5       CPU6       CPU7
+  1:          0          0          0          0          0          0          0          0     GICv3  29 Edge      arch_timer
+  2:        872       1419       1979       1601       1655        740        957        426     GICv3  30 Edge      arch_timer
+  7:       1057          0          0          0          0          0          0          0     GICv3  64 Level     serial
+ 10:         46          0          0          0          0          0          0          0     GICv3  60 Level     mmc0
+ 12:          2          0          0          0          0          0          0          0     GICv3  66 Level     2000000.i2c
+ 13:    3480360          0          0          0          0          0          0          0     GICv3  57 Level     20c0000.quadspi
+ 18:          0          0          0          0          0          0          0          0     GICv3 112 Level     xhci-hcd:usb1
+ 19:          0          0          0          0          0          0          0          0     GICv3 113 Level     xhci-hcd:usb3
+ 97:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230000 Edge      FSL MC DPRC irq0
+ 98:        352          0          0          0          0          0          0          0  fsl-mc-bus-msi 230001 Edge      FSL DPIO 8
+ 99:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230002 Edge      FSL DPIO 7
+100:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230003 Edge      FSL DPIO 6
+101:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230004 Edge      FSL DPIO 5
+102:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230005 Edge      FSL DPIO 4
+103:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230006 Edge      FSL DPIO 3
+104:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230007 Edge      FSL DPIO 2
+105:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230008 Edge      FSL DPIO 1
+106:          4          0          0          0          0          0          0          0  fsl-mc-bus-msi 230009 Edge      dpni.1
+107:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230010 Edge      dpmac.10
+108:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230011 Edge      dpmac.9
+109:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230012 Edge      dpmac.8
+110:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230013 Edge      dpmac.7
+111:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230014 Edge      dpmac.6
+112:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230015 Edge      dpmac.5
+113:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230016 Edge      dpmac.4
+114:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230017 Edge      dpmac.3
+115:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230018 Edge      dpmac.2
+116:          0          0          0          0          0          0          0          0  fsl-mc-bus-msi 230019 Edge      dpmac.1
+355:          0          0          0          0          0          0          0          0   ITS-MSI   1 Edge      aerdrv
+357:          0          0          0          0          0          0          0          0   ITS-MSI 134217728 Edge      aerdrv
+358:        720          0          0          0          0          0          0          0     GICv3 151 Level     eth0
+359:          0          0          0          0          0          0          0          0   ITS-MSI 268435456 Edge      aerdrv
+IPI0:       807     220250     850876    1240034     585259        367     586482        293       Rescheduling interrupts
+IPI1:         9         36        204         61        178         53         70         56       Function call interrupts
+IPI2:         0          0          0          0          0          0          0          0       CPU stop interrupts
+IPI3:         0          0          0          0          0          0          0          0       Timer broadcast interrupts
+IPI4:         1          0          0          0          0          0          0          0       IRQ work interrupts
+Err:          0
+root@lede:/#
+root@lede:/# uname -a
+Linux lede 4.4.36 #0 SMP Tue Jan 3 15:00:08 2017 aarch64 GNU/Linux
+root@lede:/#
+root@lede:/# i2cdetect -l
+i2c-0   i2c             2000000.i2c                             I2C adapter
+i2c-1   i2c             i2c-0-mux (chan_id 0)                   I2C adapter
+i2c-2   i2c             i2c-0-mux (chan_id 1)                   I2C adapter
+i2c-3   i2c             i2c-0-mux (chan_id 2)                   I2C adapter
+i2c-4   i2c             i2c-0-mux (chan_id 3)                   I2C adapter
+i2c-5   i2c             i2c-0-mux (chan_id 4)                   I2C adapter
+i2c-6   i2c             i2c-0-mux (chan_id 5)                   I2C adapter
+i2c-7   i2c             i2c-0-mux (chan_id 6)                   I2C adapter
+i2c-8   i2c             i2c-0-mux (chan_id 7)                   I2C adapter
+root@lede:/#
+root@lede:/# i2cdetect 0
+i2cdetect: WARNING! This program can confuse your I2C bus
+Continue? [y/N] y
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- -- -- -- -- -- --
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+60: -- -- -- -- -- -- 66 67 -- -- -- -- -- -- -- --
+70: -- -- -- -- -- -- -- UU
+root@lede:/# i2cdump 0 0x66 b
+i2cdump: WARNING! This program can confuse your I2C bus
+Continue? [y/N] y
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef
+00: 39 11 01 82 08 80 00 00 00 10 00 7f fe 00 00 00    9?????...?.??...
+10: 20 00 00 00 00 00 00 00 00 00 00 00 00 80 00 00     ............?..
+20: 00 00 73 00 cb ff ff ff 00 00 00 00 00 00 00 00    ..s.?...........
+30: 22 00 00 04 4b 00 00 00 00 00 00 00 00 00 00 00    "..?K...........
+40: 30 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    0...............
+50: 20 22 20 00 18 00 00 00 00 00 00 00 00 00 00 00     " .?...........
+60: 31 ee ff 00 00 00 ff 00 00 00 00 7f 0f 00 00 00    1?.........??...
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+d0: 00 00 00 00 00 00 00 00 00 05 00 00 00 00 00 00    .........?......
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+root@lede:/#
+root@lede:/# [  215.103780] usb 1-1: new high-speed USB device number 2 using xhci-hcd
+[  215.245176] usb 1-1: ep 0x81 - rounding interval to 128 microframes, ep desc says 255 microframes
+[  215.254064] usb 1-1: ep 0x2 - rounding interval to 128 microframes, ep desc says 255 microframes
+[  215.263010] usb-storage 1-1:1.0: USB Mass Storage device detected
+[  215.269188] scsi host0: usb-storage 1-1:1.0
+[  216.555292] scsi 0:0:0:0: Direct-Access     SMI      USB DISK         1100 PQ: 0 ANSI: 4
+[  216.563806] sd 0:0:0:0: [sda] 15730688 512-byte logical blocks: (8.05 GB/7.50 GiB)
+[  216.571883] sd 0:0:0:0: [sda] Write Protect is off
+[  216.577199] sd 0:0:0:0: [sda] No Caching mode page found
+[  216.582505] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[  216.590839]  sda: sda1 sda2
+[  216.595116] sd 0:0:0:0: [sda] Attached SCSI removable disk
+
+root@lede:/#
+root@lede:/# fdisk  -l /dev/sda
+
+Disk /dev/sda: 8054 MB, 8054112256 bytes
+248 heads, 62 sectors/track, 1023 cylinders
+Units = cylinders of 15376 * 512 = 7872512 bytes
+
+   Device Boot      Start         End      Blocks  Id System
+/dev/sda1               1         131      998976+ 83 Linux
+Partition 1 has different physical/logical beginnings (non-Linux?):
+     phys=(2, 8, 33) logical=(0, 33, 3)
+Partition 1 has different physical/logical endings:
+     phys=(402, 16, 33) logical=(130, 18, 5)
+Partition 1 does not end on cylinder boundary
+/dev/sda2             131        1024     6864896  83 Linux
+Partition 2 has different physical/logical beginnings (non-Linux?):
+     phys=(404, 1, 17) logical=(130, 32, 33)
+Partition 2 has different physical/logical endings:
+     phys=(845, 13, 32) logical=(1023, 16, 48)
+Partition 2 does not end on cylinder boundary
+root@lede:/#
+root@lede:/# mount /dev/sda1 /mnt
+[  234.704660] EXT4-fs (sda1): couldn't mount as ext3 due to feature incompatibilities
+[  234.712994] EXT4-fs (sda1): mounting ext2 file system using the ext4 subsystem
+[  234.731448] EXT4-fs (sda1): mounted filesystem without journal. Opts: (null)
+root@lede:/# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                15892     12020      3524  77% /
+tmpfs                   993212        32    993180   0% /tmp
+tmpfs                      512         0       512   0% /dev
+/dev/sda1               983256     13416    919892   1% /mnt
+root@lede:/# ls -l /mnt
+drwxr-xr-x    2 root     root          4096 Dec 27 17:00 aaa
+drwxr-xr-x    2 root     root          4096 Dec 29 16:52 bbbbbb
+drwxr-xr-x    2 1001     1001          4096 Oct 19 08:21 bin
+drwxr-xr-x    2 root     root          4096 Dec 29 16:47 ccc
+drwxr-xr-x    2 1001     1001          4096 Dec 22 15:02 dev
+drwxr-xr-x   16 1001     1001          4096 Dec 22 15:03 etc
+drwxrwxr-x   10 1001     1001          4096 Oct 19 08:21 lib
+lrwxrwxrwx    1 root     root             3 Oct 19 08:21 lib64 -> lib
+drwx------    2 root     root         16384 Oct 19 08:13 lost+found
+drwxr-xr-x    2 1001     1001          4096 Dec 22 15:02 mnt
+drwxr-xr-x    2 1001     1001          4096 Dec 22 15:02 overlay
+drwxr-xr-x    2 1001     1001          4096 Dec 22 15:02 proc
+drwxrwxr-x    2 1001     1001          4096 Oct 19 08:21 rom
+drwxr-xr-x    2 1001     1001          4096 Dec 22 15:02 root
+-rw-rw-r--    1 1001     1001             0 Dec 22 16:03 rootfs.cpio.gz
+drwxr-xr-x    2 1001     1001          4096 Oct 19 08:21 sbin
+drwxr-xr-x    2 1001     1001          4096 Dec 22 15:02 sys
+drwxr-xr-x    2 root     root          4096 Dec 23 17:37 this-is-usb
+drwxrwxrwt    2 1001     1001          4096 Dec 22 16:02 tmp
+drwxr-xr-x    7 1001     1001          4096 Oct 19 08:21 usr
+lrwxrwxrwx    1 root     root             4 Oct 19 08:21 var -> /tmp
+drwxr-xr-x    2 1001     1001          4096 Dec 22 15:02 www
+root@lede:/# umount /mnt
+root@lede:/# ls -l /mnt
+root@lede:/#
+root@lede:/#
+root@lede:/# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                15892     12020      3524  77% /
+tmpfs                   993212        32    993180   0% /tmp
+tmpfs                      512         0       512   0% /dev
+root@lede:/# [  246.576766] usb 1-1: USB disconnect, device number 2
+
+root@lede:/#
+root@lede:/# reboot
+root@lede:/# [  253.187014] br-lan: port 1(eth0) entered disabled state
+[  253.193160] device eth0 left promiscuous mode
+[  253.197753] br-lan: port 1(eth0) entered disabled state
+[  253.368742] e1000e: eth0 NIC Link is Down
+[  253.372920] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[  257.089208] EXT4-fs (mtdblock8): re-mounted. Opts: (null)
+[  260.096781] e1000e: EEE TX LPI TIMER: 00000000
+[  262.676132] reboot: Restarting system
+
+
+U-Boot 2016.01 (Dec 29 2016 - 16:42:35 +0000)
+
+SoC:  LS1088E Version:1.0 (0x87030010)
+Clock Configuration:
+       CPU0(A53):1600 MHz  CPU1(A53):1600 MHz  CPU2(A53):1600 MHz
+       CPU3(A53):1600 MHz  CPU4(A53):1600 MHz  CPU5(A53):1600 MHz
+       CPU6(A53):1600 MHz  CPU7(A53):1600 MHz
+       Bus:      700  MHz  DDR:      2100 MT/s
+Reset Configuration Word (RCW):
+       00000000: 4000541c 00000040 00000000 00000000
+       00000010: 00000000 000a0000 00300000 00000000
+       00000020: 00a011a0 00002580 00000000 00000040
+       00000030: 0000005b 00000000 00002403 00000000
+       00000040: 00000000 00000000 00000000 00000000
+       00000050: 00000000 00000000 00000000 00000000
+       00000060: 00000000 00000000 00000011 000009e7
+       00000070: 44110000 00509555 00000000 00000000
+I2C:   ready
+DRAM:  Initializing DDR....using SPD
+Detected UDIMM 18ASF1G72AZ-2G3B1
+Address hashing enabled.
+6 GiB
+DDR    6 GiB (DDR4, 64-bit, CL=15, ECC on)
+       DDR Chip-Select Interleaving Mode: CS0+CS1
+core voltage not adjusted
+Waking secondary cores to start from fff12000
+All (8) cores are up.
+Using SERDES1 Protocol: 29 (0x1d)
+Using SERDES2 Protocol: 13 (0xd)
+NAND:  512 MiB
+MMC:   FSL_SDHC: 0
+SF: Detected S25FS512S_256K with page size 256 Bytes, erase size 256 KiB, total 64 MiB
+EEPROM: NXID v1
+PCIe1: Root Complex no link, regs @ 0x3400000
+PCIe2: Root Complex no link, regs @ 0x3500000
+PCIe3: Root Complex x1 gen1, regs @ 0x3600000
+PCI:
+     01:00.0    - 8086:107d - Network controller
+PCIe3: Bus 00 - 01
+In:    serial
+Out:   serial
+Err:   serial
+Model: Freescale Layerscape 1088a RDB Board
+Board: LS1088A-RDB, Board Arch: V1, Board version: B, boot from QSPI:1
+CPLD: v1.8
+SERDES1 Reference : Clock1 = 100MHz Clock2 = 156.25MHz
+SERDES2 Reference : Clock1 = 100MHz Clock2 = 100MHz
+SEC0: RNG instantiated
+SATA link 0 timeout.
+AHCI 0001.0301 32 slots 1 ports 6 Gbps 0x1 impl SATA mode
+flags: 64bit ncq pm clo only pmp fbss pio slum part ccc apst
+Found 0 device(s).
+SCSI:  Net:   SF: Detected S25FS512S_256K with page size 256 Bytes, erase size 256 KiB, total 64 MiB
+device 0 offset 0x300000, size 0x100000
+SF: 1048576 bytes @ 0x300000 Read: OK
+device 0 offset 0x800000, size 0x100000
+SF: 1048576 bytes @ 0x800000 Read: OK
+crc32+
+fsl-mc: Booting Management Complex ... SUCCESS
+fsl-mc: Management Complex booted (version: 10.0.2, boot status: 0x1)
+e1000: 00:15:17:8e:92:a4
+       DPMAC1@xgmii [PRIME], DPMAC2@xgmii, DPMAC3@qsgmii, DPMAC4@qsgmii, DPMAC5@qsgmii, DPMAC6@qsgmii, DPMAC7@qsgmii, DPMAC8@qsgmii, DPMAC9@qsgmii, DPMAC10@qsgmii, e1000#0
+Hit any key to stop autoboot:  0
+=> pri
+baudrate=115200
+bootargs=console=ttyS0,115200 root=/dev/ram0 earlycon=uart8250,mmio,0x21c0500ramdisk_size=0x2000000 default_hugepagesz=2m hugepagesz=2m hugepages=256
+bootcmd=run wrtboot_mc_init; run wrtboot_qspi_ext4rfs
+bootdelay=3
+eth10addr=00:15:17:8e:92:a4
+eth1addr=00:04:9F:04:77:C5
+eth2addr=00:04:9F:04:77:C6
+eth3addr=00:04:9F:04:77:C7
+eth4addr=00:04:9F:04:77:C8
+eth5addr=00:04:9F:04:77:C9
+eth6addr=00:04:9F:04:77:CA
+eth7addr=00:04:9F:04:77:CB
+eth8addr=00:04:9F:04:77:CC
+eth9addr=00:04:9F:04:77:CD
+ethact=DPMAC1@xgmii
+ethaddr=00:04:9F:04:77:C4
+ethprime=DPMAC1@xgmii
+fdt_high=0xa0000000
+fdtaddr=8f000000
+fdtcontroladdr=ffd0c680
+hwconfig=fsl_ddr:bank_intlv=auto
+initrd_high=0xffffffffffffffff
+ipaddr=10.193.20.244
+kernel_addr=0x100000
+kernel_load=0xa0000000
+kernel_size=0x2800000
+kernel_start=0x1100000
+loadaddr=0x90100000
+mcinitcmd=sf probe 0:0;sf read 0x80000000 0x300000 0x100000;sf read 0x80100000 0x800000 0x100000;fsl_mc start mc 0x80000000 0x80100000
+mcmemsize=0x70000000
+ramdisk_addr=0x800000
+ramdisk_size=0x2000000
+scsidevs=0
+serverip=10.192.208.142
+stderr=serial
+stdin=serial
+stdout=serial
+tobank0=i2c mw 66 50  0; i2c mw 66 10 20;i2c mw 66 10 21
+wrtboot_mc_init=sf probe 0:0 && sf read 0x80000000 300000 100000 && sf read 0x90000000 800000 0x100000 && fsl_mc start mc 0x80000000 0x90000000 && sf read 0x80000000 0x700000 0x100000 && fsl_mc apply dpl 0x80000000
+wrtboot_mmcp1_ext4rfs=sf probe 0:0 && setenv bootargs root=/dev/mmcblk0p1 rw rootdelay=3 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=20c0000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),4M(mc),1M(dpl),1M(dpc),1M(dtb),5M(kernel),17M(ext4rfs),32M(user) && sf read $fdtaddr 0x900000 100000 && sf read $loadaddr 0xa00000 500000 && bootm $loadaddr - $fdtaddr
+wrtboot_qspi_ext4rfs=sf probe 0:0 && setenv bootargs root=/dev/mtdblock8 rootfstype=ext4 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=20c0000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),4M(mc),1M(dpl),1M(dpc),1M(dtb),5M(kernel),17M(ext4rfs),32M(user) && sf read $fdtaddr 0x900000 100000 && sf read $loadaddr 0xa00000 500000 && bootm $loadaddr - $fdtaddr
+wrtboot_sda1_ext4rfs=sf probe 0:0 && setenv bootargs root=/dev/sda1 rw rootdelay=3 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=20c0000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),4M(mc),1M(dpl),1M(dpc),1M(dtb),5M(kernel),17M(ext4rfs),32M(user) && sf read $fdtaddr 0x900000 100000 && sf read $loadaddr 0xa00000 500000 && bootm $loadaddr - $fdtaddr
+wrtupdate= sf probe 0:0 && tftp 0xa0000000 <tftp_folder>/lede-layerscape-64b-ls1088ardb-squashfs-firmware.bin && sf erase 0 $filesize && sf write 0xa0000000 0 $filesize; reset
+
+Environment size: 2770/8188 bytes
+=>
+=>

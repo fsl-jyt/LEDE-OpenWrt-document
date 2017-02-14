@@ -1,0 +1,1623 @@
+U-Boot 2016.01 (Nov 15 2016 - 15:47:45 +0000)
+
+SoC:  LS1012AE (0x87040010)
+Clock Configuration:
+       CPU0(A53):800  MHz
+       Bus:      250  MHz  DDR:      1000 MT/s
+Reset Configuration Word (RCW):
+       00000000: 08000008 00000000 00000000 00000000
+       00000010: 35080000 c000000c 40000000 00001800
+       00000020: 00000000 00000000 00000000 00014571
+       00000030: 00000000 18c2a120 00000096 00000000
+I2C:   ready
+DRAM:  1022 MiB
+SEC0: RNG instantiated
+Using SERDES1 Protocol: 13576 (0x3508)
+MMC:   FSL_SDHC: 0, FSL_SDHC: 1
+SF: Detected S25FS512S_256K with page size 512 Bytes, erase size 128 KiB, total 64 MiB
+PCIe1: Root Complex no link, regs @ 0x3400000
+In:    serial
+Out:   serial
+Err:   serial
+Model: LS1012A RDB Board
+Board: LS1012ARDB Version: unknown, boot from QSPI: bank1
+SATA link 0 timeout.
+AHCI 0001.0301 32 slots 1 ports 6 Gbps 0x1 impl SATA mode
+flags: 64bit ncq pm clo only pmp fbss pio slum part ccc apst
+Found 0 device(s).
+SCSI:  Net:   cbus_baseaddr: 0000000004000000, ddr_baseaddr: 0000000083800000, ddr_phys_baseaddr: 03800000
+class init complete
+tmu init complete
+bmu1 init: done
+bmu2 init: done
+GPI1 init complete
+GPI2 init complete
+HGPI init complete
+hif_tx_desc_init: Tx desc_base: 0000000083e40400, base_pa: 03e40400, desc_count: 64
+hif_rx_desc_init: Rx desc base: 0000000083e40000, base_pa: 03e40000, desc_count: 64
+HIF tx desc: base_va: 0000000083e40400, base_pa: 03e40400
+HIF init complete
+bmu1 enabled
+bmu2 enabled
+pfe_hw_init: done
+pfe_firmware_init
+pfe_load_elf: no of sections: 13
+pfe_firmware_init: class firmware loaded
+pfe_load_elf: no of sections: 10
+pfe_firmware_init: tmu firmware loaded
+ls1012a_configure_serdes 0
+pfe_eth0, pfe_eth1
+Hit any key to stop autoboot:  0
+=> pri
+baudrate=115200
+bootargs=console=ttyS0,115200 root=/dev/ram0 earlycon=uart8250,mmio,0x21c0500 quiet lpj=250000
+bootcmd=run wrtboot_ext4rfs
+bootdelay=3
+console=ttyAMA0,38400n8
+eth1addr=00:04:9f:04:aa:23
+ethact=pfe_eth0
+ethaddr=00:04:9f:04:aa:22
+fdt_high=0xffffffffffffffff
+fdtaddr=8f000000
+fdtcontroladdr=bfc7a348
+hwconfig=fsl_ddr:bank_intlv=auto
+initrd_high=0xffffffffffffffff
+ipaddr=10.193.20.244
+kernel_addr=0x100000
+kernel_load=0xa0000000
+kernel_size=0x2800000
+kernel_start=0xa00000
+loadaddr=82000000
+ramdisk_addr=0x800000
+ramdisk_size=0x2000000
+ramdiskaddr=88000000
+scsidevs=0
+serverip=10.192.208.142
+stderr=serial
+stdin=serial
+stdout=serial
+verify=no
+wrtboot=pfe stop && sf probe 0:0 && setenv bootargs root=/dev/mtdblock5 rootfstype=squashfs,jffs2 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=1550000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),1M(dtb),5M(kernel),23M(rootfs),32M(user) && sf read $fdtaddr 0x300000 100000 && sf read $loadaddr 0x400000 500000 && bootm $loadaddr - $fdtaddr
+wrtboot_ext4rfs=pfe stop && sf probe 0:0 && setenv bootargs root=/dev/mtdblock5 rootfstype=ext4 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=1550000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),1M(dtb),5M(kernel),23M(ext4rfs),32M(user) && sf read $fdtaddr 0x300000 100000 && sf read $loadaddr 0x400000 500000 && bootm $loadaddr - $fdtaddr
+wrtupdate= sf probe 0:0 && tftp 0xa0000000 <tftp_folder>/lede-layerscape-64b-ls1012ardb-squashfs-firmware.ext4.bin && protect off all && sf erase 0 $filesize && sf write 0xa0000000 0 $filesize; reset
+
+Environment size: 1646/262140 bytes
+=> ping 10.192.208.142
+Speed detected 3e8
+Using pfe_eth0 device
+ping failed; host 10.192.208.142 is not alive
+=> ping 10.192.208.142
+Speed detected 3e8
+Using pfe_eth0 device
+host 10.192.208.142 is alive
+=>
+=> i2c mw 0x24 0x7 0xfc; i2c mw 0x24 0x3 0xf5;
+=> sf probe 0:0 && tftp 0xa0000000 jyt/openwrt/lede-layerscape-32b-ls1012ardb-squashfs-firmware.bin && protect off all && sf erase 0 $filesize && sf write 0xa0000000 0 $filesize;
+SF: Detected S25FS512S_256K with page size 512 Bytes, erase size 128 KiB, total 64 MiB
+Speed detected 3e8
+Using pfe_eth0 device
+TFTP from server 10.192.208.142; our IP address is 10.193.20.244
+Filename 'jyt/openwrt/lede-layerscape-32b-ls1012ardb-squashfs-firmware.bin'.
+Load address: 0xa0000000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ###########
+         5.8 MiB/s
+done
+Bytes transferred = 33554432 (2000000 hex)
+SF: 33554432 bytes @ 0x0 Erased: OK
+device 0 offset 0x0, size 0x2000000
+SF: 33554432 bytes @ 0x0 Written: OK
+=> reset
+resetting ...
+
+
+U-Boot 2016.01 (Oct 26 2016 - 21:48:17 +0000)
+
+SoC:  LS1012AE (0x87040010)
+Clock Configuration:
+       CPU0(A53):800  MHz
+       Bus:      250  MHz  DDR:      1000 MT/s
+Reset Configuration Word (RCW):
+       00000000: 08000008 00000000 00000000 00000000
+       00000010: 35080000 c000000c 40000000 00001800
+       00000020: 00000000 00000000 00000000 00014571
+       00000030: 00000000 18c2a120 00000096 00000000
+I2C:   ready
+DRAM:  1022 MiB
+SEC0: RNG instantiated
+Using SERDES1 Protocol: 13576 (0x3508)
+MMC:   FSL_SDHC: 0, FSL_SDHC: 1
+SF: Detected S25FS512S_256K with page size 512 Bytes, erase size 128 KiB, total 64 MiB
+*** Warning - bad CRC, using default environment
+
+PCIe1: Root Complex no link, regs @ 0x3400000
+In:    serial
+Out:   serial
+Err:   serial
+Model: LS1012A RDB Board
+Board: LS1012ARDB Version: unknown, boot from QSPI: bank2
+SATA link 0 timeout.
+AHCI 0001.0301 32 slots 1 ports 6 Gbps 0x1 impl SATA mode
+flags: 64bit ncq pm clo only pmp fbss pio slum part ccc apst
+Found 0 device(s).
+SCSI:  Net:   cbus_baseaddr: 0000000004000000, ddr_baseaddr: 0000000083800000, ddr_phys_baseaddr: 03800000
+class init complete
+tmu init complete
+bmu1 init: done
+bmu2 init: done
+GPI1 init complete
+GPI2 init complete
+HGPI init complete
+hif_tx_desc_init: Tx desc_base: 0000000083e40400, base_pa: 03e40400, desc_count: 64
+hif_rx_desc_init: Rx desc base: 0000000083e40000, base_pa: 03e40000, desc_count: 64
+HIF tx desc: base_va: 0000000083e40400, base_pa: 03e40400
+HIF init complete
+bmu1 enabled
+bmu2 enabled
+pfe_hw_init: done
+pfe_firmware_init
+pfe_load_elf: no of sections: 13
+pfe_firmware_init: class firmware loaded
+pfe_load_elf: no of sections: 10
+pfe_firmware_init: tmu firmware loaded
+ls1012a_configure_serdes 0
+pfe_eth0
+Error: pfe_eth0 address not set.
+, pfe_eth1
+Error: pfe_eth1 address not set.
+
+Hit any key to stop autoboot:  0
+Stopping PFE...
+SF: Detected S25FS512S_256K with page size 512 Bytes, erase size 128 KiB, total 64 MiB
+device 0 offset 0x300000, size 0x100000
+SF: 1048576 bytes @ 0x300000 Read: OK
+device 0 offset 0x400000, size 0x500000
+SF: 5242880 bytes @ 0x400000 Read: OK
+## Booting kernel from Legacy Image at 82000000 ...
+   Image Name:   ARM LEDE Linux-4.4.36
+   Image Type:   ARM Linux Kernel Image (gzip compressed)
+   Data Size:    2825566 Bytes = 2.7 MiB
+   Load Address: 80008000
+   Entry Point:  80008000
+## Flattened Device Tree blob at 8f000000
+   Booting using the fdt blob at 0x8f000000
+   Uncompressing Kernel Image ... OK
+   Using Device Tree in place at 000000008f000000, end 000000008f005772
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.4.36 (jyt@BP) (gcc version 5.4.0 (LEDE GCC 5.4.0 r1262+664) ) #0 SMP Wed Dec 7 16:16:28 2016
+[    0.000000] CPU: ARMv7 Processor [410fd034] revision 4 (ARMv7), cr=30c5383d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine model: LS1012A RDB Board
+[    0.000000] Truncating RAM at 0x0000000080000000-0x00000000bfe00000 to -0x00000000b0000000
+[    0.000000] Consider using a HIGHMEM enabled kernel.
+[    0.000000] Forcing write-allocate cache policy for SMP
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] CPU 0: missing or invalid cpu-release-addr property
+[    0.000000] PERCPU: Embedded 12 pages/cpu @ef9e2000 s19328 r8192 d21632 u49152
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 195072
+[    0.000000] Kernel command line: root=/dev/mtdblock5 rootfstype=ext4 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=1550000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),1M(dtb),5M(kernel),23M(ext4rfs),32M(user)
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 760348K/786432K available (4294K kernel code, 145K rwdata, 1556K rodata, 260K init, 462K bss, 26084K reserved, 0K cma-reserved)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+[    0.000000]     vmalloc : 0xf0800000 - 0xff800000   ( 240 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xf0000000   ( 768 MB)
+[    0.000000]     modules : 0xbf000000 - 0xc0000000   (  16 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc05beeb4   (5852 kB)
+[    0.000000]       .init : 0xc05bf000 - 0xc0600000   ( 260 kB)
+[    0.000000]       .data : 0xc0600000 - 0xc06246ec   ( 146 kB)
+[    0.000000]        .bss : 0xc06246ec - 0xc06980b8   ( 463 kB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000]  RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=1.
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] GIC: Using split EOI/Deactivate mode
+[    0.000000] Architected cp15 timer(s) running at 25.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x5c40939b5, max_idle_ns: 440795202646 ns
+[    0.000005] sched_clock: 56 bits at 25MHz, resolution 40ns, wraps every 4398046511100ns
+[    0.000016] Switching to timer-based delay loop, resolution 40ns
+[    0.000455] Calibrating delay loop (skipped), value calculated using timer frequency.. 50.00 BogoMIPS (lpj=250000)
+[    0.000467] pid_max: default: 32768 minimum: 301
+[    0.000545] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.000555] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.000961] CPU: Testing write buffer coherency: ok
+[    0.001145] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.001177] Setting up static identity map for 0x800082c0 - 0x800082f4
+[    0.001795] Brought up 1 CPUs
+[    0.001805] SMP: Total of 1 processors activated (50.00 BogoMIPS).
+[    0.001811] CPU: All CPU(s) started in HYP mode.
+[    0.001817] CPU: Virtualization extensions available.
+[    0.004440] VFP support v0.3: implementor 41 architecture 3 part 40 variant 3 rev 4
+[    0.004592] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.004685] pinctrl core: initialized pinctrl subsystem
+[    0.005256] NET: Registered protocol family 16
+[    0.005578] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.018915] SCSI subsystem initialized
+[    0.019168] usbcore: registered new interface driver usbfs
+[    0.019223] usbcore: registered new interface driver hub
+[    0.019270] usbcore: registered new device driver usb
+[    0.019597] i2c i2c-0: IMX I2C adapter registered
+[    0.019607] i2c i2c-0: can't use DMA
+[    0.019712] pps_core: LinuxPPS API ver. 1 registered
+[    0.019719] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.019749] PTP clock support registered
+[    0.020079] No BMan portals available!
+[    0.020256] No QMan portals available!
+[    0.020467] No USDPAA memory, no 'fsl,usdpaa-mem' in device-tree
+[    0.021850] clocksource: Switched to clocksource arch_sys_counter
+[    0.022935] NET: Registered protocol family 2
+[    0.023404] TCP established hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.023489] TCP bind hash table entries: 8192 (order: 4, 65536 bytes)
+[    0.023631] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.023696] UDP hash table entries: 512 (order: 2, 16384 bytes)
+[    0.023732] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+[    0.023876] NET: Registered protocol family 1
+[    0.025059] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    0.025141] No memory allocated for crashlog
+[    0.035469] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.035491] jffs2: version 2.2 (NAND) (SUMMARY) (LZMA) (RTIME) (CMODE_PRIORITY) (c) 2001-2006 Red Hat, Inc.
+[    0.037719] io scheduler noop registered
+[    0.037736] io scheduler deadline registered (default)
+[    0.038460] PCI host bridge /soc/pcie@3400000 ranges:
+[    0.038488]    IO 0x4000010000..0x400001ffff -> 0x00000000
+[    0.038503]   MEM 0x4040000000..0x407fffffff -> 0x40000000
+[    0.038659] layerscape-pcie 3400000.pcie: PCI host bridge to bus 0000:00
+[    0.038674] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.038685] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+[    0.038699] pci_bus 0000:00: root bus resource [mem 0x4040000000-0x407fffffff] (bus address [0x40000000-0x7fffffff])
+[    0.039020] PCI: bus0: Fast back to back transfers disabled
+[    0.039108] PCI: bus1: Fast back to back transfers enabled
+[    0.039186] pci 0000:00:00.0: BAR 1: assigned [mem 0x4040000000-0x4043ffffff]
+[    0.039202] pci 0000:00:00.0: BAR 0: assigned [mem 0x4044000000-0x4044ffffff]
+[    0.039216] pci 0000:00:00.0: BAR 6: assigned [mem 0x4045000000-0x4045ffffff pref]
+[    0.039228] pci 0000:00:00.0: PCI bridge to [bus 01]
+[    0.039632] Serial: 8250/16550 driver, 2 ports, IRQ sharing disabled
+[    0.040303] console [ttyS0] disabled
+[    0.040348] 21c0500.serial: ttyS0 at MMIO 0x21c0500 (irq = 29, base_baud = 7812500) is a 16550A
+[    0.635895] console [ttyS0] enabled
+[    0.639769] 21c0600.serial: ttyS1 at MMIO 0x21c0600 (irq = 29, base_baud = 7812500) is a 16550A
+[    0.654380] loop: module loaded
+[    0.658805] fsl-quadspi 1550000.quadspi: s25fl512s (65536 Kbytes)
+[    0.665009] 7 cmdlinepart partitions found on MTD device 1550000.quadspi
+[    0.671734] Creating 7 MTD partitions on "1550000.quadspi":
+[    0.677319] 0x000000000000-0x000000100000 : "rcw"
+[    0.682872] 0x000000100000-0x000000200000 : "u-boot"
+[    0.688686] 0x000000200000-0x000000300000 : "u-boot-env"
+[    0.695120] 0x000000300000-0x000000400000 : "dtb"
+[    0.700695] 0x000000400000-0x000000900000 : "kernel"
+[    0.706734] 0x000000900000-0x000002000000 : "ext4rfs"
+[    0.712811] 0x000002000000-0x000004000000 : "user"
+[    0.719435] libphy: Fixed MDIO Bus: probed
+[    0.724467] Freescale FM module, FMD API version 21.1.0
+[    0.729856] Freescale FM Ports module
+[    0.733554] fsl_mac: fsl_mac: FSL FMan MAC API based driver
+[    0.739248] fsl_dpa: FSL DPAA Ethernet driver
+[    0.743696] fsl_advanced: FSL DPAA Advanced drivers:
+[    0.748673] fsl_proxy: FSL DPAA Proxy initialization driver
+[    0.754338] fsl_dpa_shared: FSL DPAA Shared Ethernet driver
+[    0.759994] fsl_dpa_macless: FSL DPAA MACless Ethernet driver
+[    0.765834] fsl_oh: FSL FMan Offline Parsing port driver
+[    0.771345] i2c /dev entries driver
+[    0.775207] sdhci: Secure Digital Host Controller Interface driver
+[    0.781408] sdhci: Copyright(c) Pierre Ossman
+[    0.785777] sdhci-pltfm: SDHCI platform and OF driver helper
+[    0.792660] sdhci-esdhc 1560000.esdhc: No vmmc regulator found
+[    0.798504] sdhci-esdhc 1560000.esdhc: No vqmmc regulator found
+[    0.861311] mmc0: SDHCI controller on 1560000.esdhc [1560000.esdhc] using ADMA 64-bit
+[    0.870338] sdhci-esdhc 1580000.esdhc: No vmmc regulator found
+[    0.876199] sdhci-esdhc 1580000.esdhc: No vqmmc regulator found
+[    0.931317] mmc1: SDHCI controller on 1580000.esdhc [1580000.esdhc] using ADMA 64-bit
+[    0.939554] No fsl,qman node
+[    0.942612] Freescale USDPAA process driver
+[    0.946800] fsl-usdpaa: no region found
+[    0.950642] Freescale USDPAA process IRQ driver
+[    0.956158] NET: Registered protocol family 10
+[    0.961912] NET: Registered protocol family 17
+[    0.966413] bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+[    0.979093] 8021q: 802.1Q VLAN Support v1.8
+[    0.983408] Registering SWP/SWPB emulation handler
+[    0.991128] fsl_generic: FSL DPAA Generic Ethernet driver
+[    0.996714] hctosys: unable to open rtc device (rtc0)
+[    1.057758] EXT4-fs (mtdblock5): mounted filesystem without journal. Opts: (null)
+[    1.065320] VFS: Mounted root (ext4 filesystem) readonly on device 31:5.
+[    1.072434] Freeing unused kernel memory: 260K (c05bf000 - c0600000)
+[    1.576102] init: Console is alive
+[    2.065319] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
+[    2.070846] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 1
+[    2.078739] xhci-hcd xhci-hcd.0.auto: hcc params 0x0220f66d hci version 0x100 quirks 0x00010010
+[    2.087508] xhci-hcd xhci-hcd.0.auto: irq 37, io mem 0x02f00000
+[    2.094316] hub 1-0:1.0: USB hub found
+[    2.098199] hub 1-0:1.0: 1 port detected
+[    2.103535] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
+[    2.109054] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 2
+[    2.116895] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[    2.125586] hub 2-0:1.0: USB hub found
+[    2.129459] hub 2-0:1.0: 1 port detected
+[    2.136254] usbcore: registered new interface driver usb-storage
+[    2.142490] mmc1: MAN_BKOPS_EN bit is not set
+[    2.152253] init: - preinit -
+[    2.196957] mmc1: new high speed MMC card at address 0001
+[    2.208420] mmcblk0: mmc1:0001 P1XXXX 3.60 GiB
+[    2.213182] mmcblk0boot0: mmc1:0001 P1XXXX partition 1 2.00 MiB
+[    2.219243] mmcblk0boot1: mmc1:0001 P1XXXX partition 2 2.00 MiB
+[    2.225313] mmcblk0rpmb: mmc1:0001 P1XXXX partition 3 128 KiB
+[    2.292914] random: procd: uninitialized urandom read (4 bytes read, 1 bits of entropy available)
+[    2.400341] random: jshn: uninitialized urandom read (4 bytes read, 1 bits of entropy available)
+[    2.427945] random: jshn: uninitialized urandom read (4 bytes read, 1 bits of entropy available)
+Press the [f] key and hit [enter] to enter failsafe mode
+Press the [1], [2], [3] or [4] key and hit [enter] to select the debug level
+[    5.587761] mount_root: mounting /dev/root
+[    5.758794] random: nonblocking pool is initialized
+[    7.543780] EXT4-fs (mtdblock5): re-mounted. Opts: (null)
+[    7.550211] urandom-seed: Seed file not found (/etc/urandom.seed)
+[    7.629207] procd: - early -
+[    8.171736] procd: - ubus -
+[    8.238006] procd: - init -
+Please press Enter to activate this console.
+[    8.382634] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+[    8.388483] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[   30.090973] cbus_baseaddr: f2e80000, ddr_baseaddr: c3400000, ddr_phys_baseaddr: 83400000, ddr_size: c00000
+[   30.100720] pfe_hw_init
+[   30.103182] CLASS version: 20
+[   30.106151] TMU version: 1011231
+[   30.109380] BMU1 version: 21
+[   30.112270] BMU2 version: 21
+[   30.115151] EGPI1 version: 50
+[   30.118118] EGPI2 version: 50
+[   30.121086] HGPI version: 50
+[   30.123976] GPT version: 0
+[   30.126683] HIF version: 10
+[   30.129477] HIF NOPCY version: 10
+[   30.132802] bmu_init(1) done
+[   30.135684] bmu_init(2) done
+[   30.140787] class_init() done
+[   30.153804] tmu_init() done
+[   30.156601] gpi_init(1) done
+[   30.159484] gpi_init(2) done
+[   30.162375] gpi_init(hif) done
+[   30.165430] bmu_enable(1) done
+[   30.168485] bmu_enable(2) done
+[   30.171548] pfe_hif_lib_init
+[   30.174526] pfe_hif_init
+[   30.177059] pfe_hif_alloc_descr
+[   30.180245] pfe_hif_init_buffers
+[   30.183638] pfe_firmware_init
+[   30.366608] pfe_load_elf
+[   30.371169] pe_load_ddr_section: load address(3fb0000) and elf file address(f0a0b000) rcvd
+[   30.407544] PFE binary version: pfe_ls1012a_00_3-3-g1fa4da1-dirty
+[   30.413661] pfe_firmware_init: class firmware loaded 0xa60 0xc3010000
+[   30.420111] pfe_load_elf
+[   30.423838] WARNING: PFE firmware binaries from incompatible version
+[   30.430203] pfe_firmware_init: tmu firmware loaded 0x200
+[   30.435552] pfe_ctrl_init
+[   30.513938] pfe_ctrl_init finished
+[   30.519359] pfe_eth_init
+[   30.521939] pfe_eth_mdio_init
+[   30.525135] pfe_ctrl_timer
+[   30.546759] libphy: Comcerto MDIO Bus: probed
+[   30.553691] pfe_phy_init interface 3
+[   30.563886] eth0: pfe_eth_open
+[   30.567119] hif_process_client_req: register client_id 0
+[   30.572489] pfe_hif_client_register
+[   30.576001] eth0: pfe_gemac_init
+[   30.624803] device eth0 entered promiscuous mode
+[   30.630036] br-lan: port 1(eth0) entered forwarding state
+[   30.635514] br-lan: port 1(eth0) entered forwarding state
+[   30.641595] eth0: pfe_eth_init_one: created interface, baseaddr: f3080000
+[   30.720319] pfe_phy_init interface 7
+[   30.801771] eth1: pfe_eth_init_one: created interface, baseaddr: f30a0000
+[   30.808672] pfe_debugfs_init
+[   32.631308] br-lan: port 1(eth0) entered forwarding state
+
+
+
+BusyBox v1.25.1 () built-in shell (ash)
+
+     _________
+    /        /\      _    ___ ___  ___
+   /  LE    /  \    | |  | __|   \| __|
+  /    DE  /    \   | |__| _|| |) | _|
+ /________/  LE  \  |____|___|___/|___|                      lede-project.org
+ \        \   DE /
+  \    LE  \    /  -----------------------------------------------------------
+   \  DE    \  /    Reboot (CURRENT, r1262+1184-a31dbf6)
+    \________\/    -----------------------------------------------------------
+
+=== WARNING! =====================================
+There is no root password defined on this device!
+Use the "passwd" command to set up a new password
+in order to prevent unauthorized SSH logins.
+--------------------------------------------------
+root@lede:/# uname -a
+Linux lede 4.4.36 #0 SMP Wed Dec 7 16:16:28 2016 armv7l GNU/Linux
+root@lede:/# cat /proc/interrupts
+           CPU0
+ 16:          0     GICv2  29 Edge      arch_timer
+ 17:       5161     GICv2  30 Edge      arch_timer
+ 24:       1924     GICv2  94 Level     mmc0
+ 25:         91     GICv2  97 Level     mmc1
+ 26:    4021200     GICv2 131 Level     1550000.quadspi
+ 28:          0     GICv2  88 Level     2180000.i2c
+ 29:        165     GICv2  86 Level     serial
+ 37:          0     GICv2  92 Level     xhci-hcd:usb1
+ 40:        362     GICv2 204 Level     pfe_hif
+ 42:          0       MSI   0 Edge      aerdrv
+IPI0:          0  CPU wakeup interrupts
+IPI1:          0  Timer broadcast interrupts
+IPI2:          0  Rescheduling interrupts
+IPI3:          0  Function call interrupts
+IPI4:          0  Single function call interrupts
+IPI5:          0  CPU stop interrupts
+IPI6:          0  IRQ work interrupts
+IPI7:          0  completion interrupts
+Err:          0
+root@lede:/# ifconfig
+br-lan    Link encap:Ethernet  HWaddr 00:1A:2B:3C:4D:5E
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fd40:a36d:1d80::1/60 Scope:Global
+          inet6 addr: fe80::21a:2bff:fe3c:4d5e/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:340 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:28444 (27.7 KiB)  TX bytes:1126 (1.0 KiB)
+
+eth0      Link encap:Ethernet  HWaddr 00:1A:2B:3C:4D:5E
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:452 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:14 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:43514 (42.4 KiB)  TX bytes:1344 (1.3 KiB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:16 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:16 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1
+          RX bytes:1264 (1.2 KiB)  TX bytes:1264 (1.2 KiB)
+
+root@lede:/# ifconfig br-lan 10.193.20.244
+root@lede:/# ping 10.193.20.106
+PING 10.193.20.106 (10.193.20.106): 56 data bytes
+64 bytes from 10.193.20.106: seq=0 ttl=64 time=0.373 ms
+64 bytes from 10.193.20.106: seq=1 ttl=64 time=0.193 ms
+64 bytes from 10.193.20.106: seq=2 ttl=64 time=0.189 ms
+^C
+--- 10.193.20.106 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.189/0.251/0.373 ms
+root@lede:/#
+root@lede:/# ifconfig
+br-lan    Link encap:Ethernet  HWaddr 00:1A:2B:3C:4D:5E
+          inet addr:10.193.20.244  Bcast:10.255.255.255  Mask:255.0.0.0
+          inet6 addr: fd40:a36d:1d80::1/60 Scope:Global
+          inet6 addr: fe80::21a:2bff:fe3c:4d5e/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:529 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:19 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:43459 (42.4 KiB)  TX bytes:1806 (1.7 KiB)
+
+eth0      Link encap:Ethernet  HWaddr 00:1A:2B:3C:4D:5E
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:811 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:19 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:77868 (76.0 KiB)  TX bytes:1726 (1.6 KiB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:32 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:32 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1
+          RX bytes:2528 (2.4 KiB)  TX bytes:2528 (2.4 KiB)
+
+root@lede:/# i2cdetect 0
+i2cdetect: WARNING! This program can confuse your I2C bus
+Continue? [y/N] y
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- 08 09 -- -- -- -- -- --
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- 1e --
+20: 20 -- -- -- 24 25 26 -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+40: 40 -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+70: -- -- -- -- -- -- -- --
+root@lede:/# i2cdump 0 0x26 b
+i2cdump: WARNING! This program can confuse your I2C bus
+Continue? [y/N] y
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef
+00: ff ff ff ff 00 00 ff ff XX XX XX XX XX XX XX XX    ........XXXXXXXX
+10: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+20: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+30: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+40: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+50: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+60: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+70: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+80: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+90: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+a0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+b0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+c0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+d0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+e0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+f0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+root@lede:/#
+root@lede:/# i2cdump 0 0x40 b
+i2cdump: WARNING! This program can confuse your I2C bus
+Continue? [y/N] y
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef
+00: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+10: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+20: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+30: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+40: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+50: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+60: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+70: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+80: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+90: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+a0: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+b0: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+c0: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+d0: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+e0: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+f0: 39 00 07 00 00 00 20 fd 39 00 07 00 00 00 20 fd    9.?... ?9.?... ?
+root@lede:/#
+root@lede:/# i2cdump 0 0x20 b
+i2cdump: WARNING! This program can confuse your I2C bus
+Continue? [y/N] y
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef
+00: 00 80 0d 4a 12 06 a1 00 00 00 00 08 d7 00 00 00    .??J???....??...
+10: 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00    .?..............
+20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+30: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+80: 00 80 0d 4a 12 06 a1 00 00 00 00 08 d7 00 00 00    .??J???....??...
+90: 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00    .?..............
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/# [  263.504884] mmc0: new high speed SD card at address b368
+[  263.510910] mmcblk1: mmc0:b368 SMI   1.87 GiB
+[  263.517153]  mmcblk1: p1 p2 p3 p4
+
+root@lede:/# ls -l /mnt
+root@lede:/#
+root@lede:/# mount /dev/mmcblk1p3 /mnt
+[  305.438937] EXT4-fs (mmcblk1p3): couldn't mount as ext3 due to feature incompatibilities
+[  305.448441] EXT4-fs (mmcblk1p3): mounting ext2 file system using the ext4 subsystem
+[  305.461594] EXT4-fs (mmcblk1p3): warning: checktime reached, running e2fsck is recommended
+[  305.473885] EXT4-fs (mmcblk1p3): mounted filesystem without journal. Opts: (null)
+root@lede:/# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                22036     10052     11516  47% /
+tmpfs                   380304        32    380272   0% /tmp
+tmpfs                      512         0       512   0% /dev
+/dev/mmcblk1p3          465309      2321    438963   1% /mnt
+root@lede:/# ls -l /mnt
+drwxr-xr-x    2 root     root          1024 Dec  7 16:18 aaa
+-rw-r--r--    1 root     root            29 Feb 14  2012 d.txt
+drwxr-xr-x    2 root     root          1024 Feb 14  2012 ddd
+drwx------    2 root     root         12288 Feb 14  2012 lost+found
+root@lede:/# rm -rf /mnt/aaa
+root@lede:/# rm -rf /mnt/d.txt
+root@lede:/# rm -rf /mnt/ddd
+root@lede:/# ls -l /mnt
+drwx------    2 root     root         12288 Feb 14  2012 lost+found
+root@lede:/# umount /mnt
+root@lede:/# mount /dev/mmcblk1p3 /mnt
+[  342.466942] EXT4-fs (mmcblk1p3): couldn't mount as ext3 due to feature incompatibilities
+[  342.476447] EXT4-fs (mmcblk1p3): mounting ext2 file system using the ext4 subsystem
+[  342.489581] EXT4-fs (mmcblk1p3): warning: checktime reached, running e2fsck is recommended
+[  342.502001] EXT4-fs (mmcblk1p3): mounted filesystem without journal. Opts: (null)
+root@lede:/# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                22036     10052     11516  47% /
+tmpfs                   380304        32    380272   0% /tmp
+tmpfs                      512         0       512   0% /dev
+/dev/mmcblk1p3          465309      2318    438966   1% /mnt
+root@lede:/# ls -l /mnt
+drwx------    2 root     root         12288 Feb 14  2012 lost+found
+root@lede:/# umount /mnt
+root@lede:/# [  354.511413] mmc0: card b368 removed
+
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/# [  591.101366] usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+[  591.123276] usb-storage 2-1:1.0: USB Mass Storage device detected
+[  591.129756] scsi host0: usb-storage 2-1:1.0
+[  592.131834] scsi 0:0:0:0: Direct-Access     SanDisk  Ultra Fit        1.00 PQ: 0 ANSI: 6
+[  592.141562] sd 0:0:0:0: [sda] 62566488 512-byte logical blocks: (32.0 GB/29.8 GiB)
+[  592.150006] sd 0:0:0:0: [sda] Write Protect is off
+[  592.155348] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+[  592.198757]  sda: sda1
+[  592.203255] sd 0:0:0:0: [sda] Attached SCSI removable disk
+
+root@lede:/# ls -l /mnt
+root@lede:/# mount /dev/sda1 /mnt
+[  605.231417] FAT-fs (sda1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+root@lede:/# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                22036     10052     11516  47% /
+tmpfs                   380304        32    380272   0% /tmp
+tmpfs                      512         0       512   0% /dev
+/dev/sda1              8376320   5282760   3093560  63% /mnt
+root@lede:/# ls -l /mnt
+-rwxr-xr-x    1 root     root     2633608009 Jun 16 01:40 CW_CW4NET_v2016.01_Win_b160115_Offline.exe
+-rwxr-xr-x    1 root     root      12180480 Sep  1 19:07 Image
+drwxr-xr-x    3 root     root          8192 Nov  9 15:43 Serial_driver
+-rwxr-xr-x    1 root     root        614400 May 30  2016 Serial_driver.tar
+-rwxr-xr-x    1 root     root     2564476928 Nov 30 11:28 Windows_7_32-bit_Professional_x86.iso
+-rwxr-xr-x    1 root     root           189 Sep  1 19:07 boot.nsh
+-rwxr-xr-x    1 root     root         14269 Aug  4 18:21 cw_license.docx
+-rwxr-xr-x    1 root     root      25675850 Sep  1 19:08 fsl-image-core-ls2080ardb.ext2.gz
+-rwxr-xr-x    1 root     root         14755 Sep  1 19:07 fsl-ls2080a-rdb.dtb
+-rwxr-xr-x    1 root     root          3019 Oct 10 15:08 license.dat
+root@lede:/# mkdir /mnt/aaa
+root@lede:/# ls -l /mnt
+-rwxr-xr-x    1 root     root     2633608009 Jun 16 01:40 CW_CW4NET_v2016.01_Win_b160115_Offline.exe
+-rwxr-xr-x    1 root     root      12180480 Sep  1 19:07 Image
+drwxr-xr-x    3 root     root          8192 Nov  9 15:43 Serial_driver
+-rwxr-xr-x    1 root     root        614400 May 30  2016 Serial_driver.tar
+-rwxr-xr-x    1 root     root     2564476928 Nov 30 11:28 Windows_7_32-bit_Professional_x86.iso
+drwxr-xr-x    2 root     root          8192 Dec  7 16:26 aaa
+-rwxr-xr-x    1 root     root           189 Sep  1 19:07 boot.nsh
+-rwxr-xr-x    1 root     root         14269 Aug  4 18:21 cw_license.docx
+-rwxr-xr-x    1 root     root      25675850 Sep  1 19:08 fsl-image-core-ls2080ardb.ext2.gz
+-rwxr-xr-x    1 root     root         14755 Sep  1 19:07 fsl-ls2080a-rdb.dtb
+-rwxr-xr-x    1 root     root          3019 Oct 10 15:08 license.dat
+root@lede:/# umount /mnt
+root@lede:/# ls -l /mnt
+root@lede:/# mount /dev/sda1 /mnt
+[  627.930934] FAT-fs (sda1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+root@lede:/# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                22036     10052     11516  47% /
+tmpfs                   380304        32    380272   0% /tmp
+tmpfs                      512         0       512   0% /dev
+/dev/sda1              8376320   5282768   3093552  63% /mnt
+root@lede:/# ls -l /mnt
+-rwxr-xr-x    1 root     root     2633608009 Jun 16 01:40 CW_CW4NET_v2016.01_Win_b160115_Offline.exe
+-rwxr-xr-x    1 root     root      12180480 Sep  1 19:07 Image
+drwxr-xr-x    3 root     root          8192 Nov  9 15:43 Serial_driver
+-rwxr-xr-x    1 root     root        614400 May 30  2016 Serial_driver.tar
+-rwxr-xr-x    1 root     root     2564476928 Nov 30 11:28 Windows_7_32-bit_Professional_x86.iso
+drwxr-xr-x    2 root     root          8192 Dec  7 16:26 aaa
+-rwxr-xr-x    1 root     root           189 Sep  1 19:07 boot.nsh
+-rwxr-xr-x    1 root     root         14269 Aug  4 18:21 cw_license.docx
+-rwxr-xr-x    1 root     root      25675850 Sep  1 19:08 fsl-image-core-ls2080ardb.ext2.gz
+-rwxr-xr-x    1 root     root         14755 Sep  1 19:07 fsl-ls2080a-rdb.dtb
+-rwxr-xr-x    1 root     root          3019 Oct 10 15:08 license.dat
+root@lede:/# umount /mnt
+root@lede:/# [  638.521402] usb 2-1: reset SuperSpeed USB device number 2 using xhci-hcd
+[  639.241389] usb 2-1: reset SuperSpeed USB device number 2 using xhci-hcd
+[  640.151419] usb 2-1: Device not responding to setup address.
+[  640.361362] usb 2-1: Device not responding to setup address.
+[  640.571318] usb 2-1: device not accepting address 2, error -71
+[  640.631437] usb 2-1: USB disconnect, device number 2
+
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/# reboot
+root@lede:/# [  660.128446] br-lan: port 1(eth0) entered disabled state
+[  660.140881] device eth0 left promiscuous mode
+[  660.145363] br-lan: port 1(eth0) entered disabled state
+[  660.154691] eth0: pfe_eth_shutdown
+[  660.191314] hif_lib_client_unregister : client: eedd0484, client_id: 0, txQ_depth: 2048, rxQ_depth: 256
+[  660.200733] hif_process_client_req: unregister client_id 0
+[  660.206235] pfe_hif_client_unregister
+[  660.210147] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[  663.272190] EXT4-fs (mtdblock5): re-mounted. Opts: (null)
+[  668.873440] reboot: Restarting system
+
+
+U-Boot 2016.01 (Oct 26 2016 - 21:48:17 +0000)
+
+SoC:  LS1012AE (0x87040010)
+Clock Configuration:
+       CPU0(A53):800  MHz
+       Bus:      250  MHz  DDR:      1000 MT/s
+Reset Configuration Word (RCW):
+       00000000: 08000008 00000000 00000000 00000000
+       00000010: 35080000 c000000c 40000000 00001800
+       00000020: 00000000 00000000 00000000 00014571
+       00000030: 00000000 18c2a120 00000096 00000000
+I2C:   ready
+DRAM:  1022 MiB
+SEC0: RNG instantiated
+Using SERDES1 Protocol: 13576 (0x3508)
+MMC:   FSL_SDHC: 0, FSL_SDHC: 1
+SF: Detected S25FS512S_256K with page size 512 Bytes, erase size 128 KiB, total 64 MiB
+*** Warning - bad CRC, using default environment
+
+PCIe1: Root Complex no link, regs @ 0x3400000
+In:    serial
+Out:   serial
+Err:   serial
+Model: LS1012A RDB Board
+Board: LS1012ARDB Version: unknown, boot from QSPI: bank2
+SATA link 0 timeout.
+AHCI 0001.0301 32 slots 1 ports 6 Gbps 0x1 impl SATA mode
+flags: 64bit ncq pm clo only pmp fbss pio slum part ccc apst
+Found 0 device(s).
+SCSI:  Net:   cbus_baseaddr: 0000000004000000, ddr_baseaddr: 0000000083800000, ddr_phys_baseaddr: 03800000
+class init complete
+tmu init complete
+bmu1 init: done
+bmu2 init: done
+GPI1 init complete
+GPI2 init complete
+HGPI init complete
+hif_tx_desc_init: Tx desc_base: 0000000083e40400, base_pa: 03e40400, desc_count: 64
+hif_rx_desc_init: Rx desc base: 0000000083e40000, base_pa: 03e40000, desc_count: 64
+HIF tx desc: base_va: 0000000083e40400, base_pa: 03e40400
+HIF init complete
+bmu1 enabled
+bmu2 enabled
+pfe_hw_init: done
+pfe_firmware_init
+pfe_load_elf: no of sections: 13
+pfe_firmware_init: class firmware loaded
+pfe_load_elf: no of sections: 10
+pfe_firmware_init: tmu firmware loaded
+ls1012a_configure_serdes 0
+pfe_eth0
+Error: pfe_eth0 address not set.
+, pfe_eth1
+Error: pfe_eth1 address not set.
+
+Hit any key to stop autoboot:  0
+=> i2c mw 0x24 0x7 0xfc; i2c mw 0x24 0x3 0xf4;
+=> setenv ethact pfe_eth0
+=> setenv ethaddr 00:04:9f:04:aa:22
+=> setenv eth1addr 00:04:9f:04:aa:23
+=> setenv serverip 10.192.208.142
+=> setenv ipaddr 10.193.20.244
+=> ping $serverip
+Speed detected 3e8
+Using pfe_eth0 device
+ping failed; host 10.192.208.142 is not alive
+=> ping $serverip
+Speed detected 3e8
+Using pfe_eth0 device
+host 10.192.208.142 is alive
+=> sf probe 0:0 && tftp 0xa0000000 jyt/openwrt/lede-layerscape-64b-ls1012ardb-squashfs-firmware.bin && protect off all && sf erase 0 $filesize && sf write 0xa0000000 0 $filesize;
+SF: Detected S25FS512S_256K with page size 512 Bytes, erase size 128 KiB, total 64 MiB
+Speed detected 3e8
+Using pfe_eth0 device
+TFTP from server 10.192.208.142; our IP address is 10.193.20.244
+Filename 'jyt/openwrt/lede-layerscape-64b-ls1012ardb-squashfs-firmware.bin'.
+Load address: 0xa0000000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ###########
+         6.2 MiB/s
+done
+Bytes transferred = 33554432 (2000000 hex)
+SF: 33554432 bytes @ 0x0 Erased: OK
+device 0 offset 0x0, size 0x2000000
+SF: 33554432 bytes @ 0x0 Written: OK
+=> reset
+resetting ...
+
+
+U-Boot 2016.09 (Dec 07 2016 - 16:16:28 +0000)
+
+SoC:  LS1012AE Rev1.0 (0x87040010)
+Clock Configuration:
+       CPU0(A53):800  MHz
+       Bus:      250  MHz  DDR:      1000 MT/s
+Reset Configuration Word (RCW):
+       00000000: 08000008 00000000 00000000 00000000
+       00000010: 35080000 c000000c 40000000 00001800
+       00000020: 00000000 00000000 00000000 00014571
+       00000030: 00000000 18c2a120 00000096 00000000
+I2C:   ready
+DRAM:  1022 MiB
+Using SERDES1 Protocol: 13576 (0x3508)
+MMC:   FSL_SDHC: 0
+SF: Detected S25FS512S with page size 256 Bytes, erase size 256 KiB, total 64 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Model: LS1012A RDB Board
+Board: LS1012ARDB Version: unknown, boot from QSPI: bank1
+SATA link 0 timeout.
+AHCI 0001.0301 32 slots 1 ports 6 Gbps 0x1 impl SATA mode
+flags: 64bit ncq pm clo only pmp fbss pio slum part ccc apst
+Found 0 device(s).
+SCSI:  Net:   cbus_baseaddr: 0000000004000000, ddr_baseaddr: 0000000083800000, ddr_phys_baseaddr: 03800000
+class init complete
+tmu init complete
+bmu1 init: done
+bmu2 init: done
+GPI1 init complete
+GPI2 init complete
+HGPI init complete
+hif_tx_desc_init: Tx desc_base: 0000000083e40400, base_pa: 03e40400, desc_count: 64
+hif_rx_desc_init: Rx desc base: 0000000083e40000, base_pa: 03e40000, desc_count: 64
+HIF tx desc: base_va: 0000000083e40400, base_pa: 03e40400
+HIF init complete
+bmu1 enabled
+bmu2 enabled
+pfe_hw_init: done
+pfe_firmware_init
+pfe_load_elf: no of sections: 13
+pfe_firmware_init: class firmware loaded
+pfe_load_elf: no of sections: 10
+pfe_firmware_init: tmu firmware loaded
+ls1012a_configure_serdes 0
+PCIe0: pcie@3400000 Root Complex: no link
+pfe_eth0
+Warning: pfe_eth0 (eth0) using random MAC address - fe:77:14:3e:cc:f0
+, pfe_eth1
+Warning: pfe_eth1 (eth1) using random MAC address - 1a:70:57:7b:33:64
+
+Hit any key to stop autoboot:  0
+Stopping PFE...
+SF: Detected S25FS512S with page size 256 Bytes, erase size 256 KiB, total 64 MiB
+device 0 offset 0x300000, size 0x100000
+SF: 1048576 bytes @ 0x300000 Read: OK
+device 0 offset 0x400000, size 0x500000
+SF: 5242880 bytes @ 0x400000 Read: OK
+## Booting kernel from Legacy Image at 82000000 ...
+   Image Name:   ARM64 LEDE Linux-4.4.36
+   Image Type:   AArch64 Linux Kernel Image (gzip compressed)
+   Data Size:    3235644 Bytes = 3.1 MiB
+   Load Address: 80080000
+   Entry Point:  80080000
+## Flattened Device Tree blob at 8f000000
+   Booting using the fdt blob at 0x8f000000
+   Uncompressing Kernel Image ... OK
+   Using Device Tree in place at 000000008f000000, end 000000008f005772
+WARNING: fdt_fixup_stdout: could not read serial0 alias: FDT_ERR_NOTFOUND
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.4.36 (jyt@BP) (gcc version 5.4.0 (LEDE GCC 5.4.0 r1262+1089) ) #0 SMP Wed Dec 7 16:16:28 2016
+[    0.000000] Boot CPU: AArch64 Processor [410fd034]
+[    0.000000] earlycon: Early serial console at MMIO 0x21c0500 (options '')
+[    0.000000] bootconsole [uart0] enabled
+[    0.000000] efi: Getting EFI parameters from FDT:
+[    0.000000] efi: UEFI not found.
+[    0.000000] WARNING: x1-x3 nonzero in violation of boot protocol:
+[    0.000000]  x1: 0000000000000000
+[    0.000000]  x2: 0000000000000000
+[    0.000000]  x3: 0000000080080000
+[    0.000000] This indicates a broken bootloader or old kernel
+[    0.000000] PERCPU: Embedded 15 pages/cpu @ffffffc03fdda000 s23808 r8192 d29440 u61440
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: enabling workaround for ARM erratum 845719
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 257544
+[    0.000000] Kernel command line: root=/dev/mtdblock5 rootfstype=ext4 noinitrd console=ttyS0,115200 earlycon=uart8250,mmio,0x21c0500 mtdparts=1550000.quadspi:1M(rcw),1M(u-boot),1M(u-boot-env),1M(dtb),5M(kernel),23M(ext4rfs),32M(user)
+[    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
+[    0.000000] software IO TLB [mem 0xbaa00000-0xbea00000] (64MB) mapped at [ffffffc03aa00000-ffffffc03e9fffff]
+[    0.000000] Memory: 941776K/1046528K available (4804K kernel code, 291K rwdata, 2128K rodata, 256K init, 809K bss, 104752K reserved, 0K cma-reserved)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vmalloc : 0xffffff8000000000 - 0xffffffbdbfff0000   (   246 GB)
+[    0.000000]     vmemmap : 0xffffffbdc0000000 - 0xffffffbfc0000000   (     8 GB maximum)
+[    0.000000]               0xffffffbdc0000000 - 0xffffffbdc0ff8000   (    15 MB actual)
+[    0.000000]     fixed   : 0xffffffbffabfd000 - 0xffffffbffac00000   (    12 KB)
+[    0.000000]     PCI I/O : 0xffffffbffae00000 - 0xffffffbffbe00000   (    16 MB)
+[    0.000000]     modules : 0xffffffbffc000000 - 0xffffffc000000000   (    64 MB)
+[    0.000000]     memory  : 0xffffffc000000000 - 0xffffffc03fe00000   (  1022 MB)
+[    0.000000]       .init : 0xffffffc000748000 - 0xffffffc000788000   (   256 KB)
+[    0.000000]       .text : 0xffffffc000080000 - 0xffffffc000747384   (  6941 KB)
+[    0.000000]       .data : 0xffffffc000799000 - 0xffffffc0007e1e00   (   292 KB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000]  CONFIG_RCU_FANOUT set to non-default value of 32
+[    0.000000]  RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=1.
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS:64 nr_irqs:64 0
+[    0.000000] GIC: Using split EOI/Deactivate mode
+[    0.000000] Architected cp15 timer(s) running at 25.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x5c40939b5, max_idle_ns: 440795202646 ns
+[    0.000005] sched_clock: 56 bits at 25MHz, resolution 40ns, wraps every 4398046511100ns
+[    0.008178] Calibrating delay loop (skipped), value calculated using timer frequency.. 50.00 BogoMIPS (lpj=250000)
+[    0.018627] pid_max: default: 32768 minimum: 301
+[    0.023344] Mount-cache hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.030109] Mountpoint-cache hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.037921] EFI services will not be available.
+[    0.042535] ASID allocator initialised with 65536 entries
+[    0.048588] Brought up 1 CPUs
+[    0.051576] SMP: Total of 1 processors activated.
+[    0.056337] CPU: All CPU(s) started at EL2
+[    0.060470] alternatives: patching kernel code
+[    0.067531] DMI not present or invalid.
+[    0.071594] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.081793] atomic64_test: passed
+[    0.085805] NET: Registered protocol family 16
+[    0.091385] fsl-mc bus type registered
+[    0.095594] MC object device driver fsl_mc_dprc registered
+[    0.101181] MC object device driver fsl_mc_allocator registered
+[    0.107481] vdso: 2 pages (1 code @ ffffffc0007a1000, 1 data @ ffffffc0007a0000)
+[    0.115168] DMA: preallocated 256 KiB pool for atomic allocations
+[    0.121549] Serial: AMBA PL011 UART driver
+[    0.143087] ACPI: Interpreter disabled.
+[    0.147416] SCSI subsystem initialized
+[    0.152118] usbcore: registered new interface driver usbfs
+[    0.157698] usbcore: registered new interface driver hub
+[    0.163965] usbcore: registered new device driver usb
+[    0.169386] i2c i2c-0: IMX I2C adapter registered
+[    0.174287] i2c i2c-0: can't use DMA
+[    0.178311] dmi: Firmware registration failed.
+[    0.182904] No BMan portals available!
+[    0.187375] QMan: Allocated lookup table at ffffff80000b1000, entry count 65537
+[    0.194851] No QMan portals available!
+[    0.198852] No USDPAA memory, no 'fsl,usdpaa-mem' in device-tree
+[    0.205824] clocksource: Switched to clocksource arch_sys_counter
+[    0.212566] pnp: PnP ACPI: disabled
+[    0.217301] NET: Registered protocol family 2
+[    0.222655] TCP established hash table entries: 8192 (order: 4, 65536 bytes)
+[    0.229939] TCP bind hash table entries: 8192 (order: 5, 131072 bytes)
+[    0.236733] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.243367] UDP hash table entries: 512 (order: 2, 16384 bytes)
+[    0.249381] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+[    0.255998] NET: Registered protocol family 1
+[    0.260627] RPC: Registered named UNIX socket transport module.
+[    0.266617] RPC: Registered udp transport module.
+[    0.271356] RPC: Registered tcp transport module.
+[    0.276105] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.283590] futex hash table entries: 256 (order: 3, 32768 bytes)
+[    0.290111] No memory allocated for crashlog
+[    0.305305] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.312646] jffs2: version 2.2 (NAND) (SUMMARY) (LZMA) (RTIME) (CMODE_PRIORITY) (c) 2001-2006 Red Hat, Inc.
+[    0.324943] io scheduler noop registered (default)
+[    0.330780] PCI host bridge /soc/pcie@3400000 ranges:
+[    0.336246]    IO 0x4000010000..0x400001ffff -> 0x00000000
+[    0.341787]   MEM 0x4040000000..0x407fffffff -> 0x40000000
+[    0.347562] layerscape-pcie 3400000.pcie: PCI host bridge to bus 0000:00
+[    0.354328] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.359971] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+[    0.366231] pci_bus 0000:00: root bus resource [mem 0x4040000000-0x407fffffff] (bus address [0x40000000-0x7fffffff])
+[    0.377341] pci 0000:00:00.0: BAR 6: assigned [mem 0x4040000000-0x40400007ff pref]
+[    0.384980] pci 0000:00:00.0: PCI bridge to [bus 01]
+[    0.390972] Serial: 8250/16550 driver, 2 ports, IRQ sharing disabled
+[    0.398433] console [ttyS0] disabled
+[    0.402256] 21c0500.serial: ttyS0 at MMIO 0x21c0500 (irq = 14, base_baud = 7812500) is a 16550A
+[    0.411109] console [ttyS0] enabled
+[    0.411109] console [ttyS0] enabled
+[    0.418139] bootconsole [uart0] disabled
+[    0.418139] bootconsole [uart0] disabled
+[    0.426411] 21c0600.serial: ttyS1 at MMIO 0x21c0600 (irq = 14, base_baud = 7812500) is a 16550A
+[    0.435700] Unable to detect cache hierarchy from DT for CPU 0
+[    0.446611] loop: module loaded
+[    0.451117] fsl-quadspi 1550000.quadspi: s25fl512s (65536 Kbytes)
+[    0.457660] 7 cmdlinepart partitions found on MTD device 1550000.quadspi
+[    0.464374] Creating 7 MTD partitions on "1550000.quadspi":
+[    0.470036] 0x000000000000-0x000000100000 : "rcw"
+[    0.475511] 0x000000100000-0x000000200000 : "u-boot"
+[    0.481411] 0x000000200000-0x000000300000 : "u-boot-env"
+[    0.487588] 0x000000300000-0x000000400000 : "dtb"
+[    0.493143] 0x000000400000-0x000000900000 : "kernel"
+[    0.498958] 0x000000900000-0x000002000000 : "ext4rfs"
+[    0.504850] 0x000002000000-0x000004000000 : "user"
+[    0.512098] libphy: Fixed MDIO Bus: probed
+[    0.517519] Freescale FM module, FMD API version 21.1.0
+[    0.522908] Freescale FM Ports module
+[    0.526812] fsl_mac: fsl_mac: FSL FMan MAC API based driver
+[    0.532584] fsl_dpa: FSL DPAA Ethernet driver
+[    0.537266] fsl_advanced: FSL DPAA Advanced drivers:
+[    0.542241] fsl_proxy: FSL DPAA Proxy initialization driver
+[    0.548043] fsl_dpa_shared: FSL DPAA Shared Ethernet driver
+[    0.553779] fsl_dpa_macless: FSL DPAA MACless Ethernet driver
+[    0.559668] fsl_oh: FSL FMan Offline Parsing port driver
+[    0.565257] i2c /dev entries driver
+[    0.569197] sdhci: Secure Digital Host Controller Interface driver
+[    0.575387] sdhci: Copyright(c) Pierre Ossman
+[    0.579957] sdhci-pltfm: SDHCI platform and OF driver helper
+[    0.586841] sdhci-esdhc 1560000.esdhc: No vmmc regulator found
+[    0.592685] sdhci-esdhc 1560000.esdhc: No vqmmc regulator found
+[    0.635841] mmc0: SDHCI controller on 1560000.esdhc [1560000.esdhc] using ADMA 64-bit
+[    0.646066] sdhci-esdhc 1580000.esdhc: No vmmc regulator found
+[    0.651910] sdhci-esdhc 1580000.esdhc: No vqmmc regulator found
+[    0.705842] mmc1: SDHCI controller on 1580000.esdhc [1580000.esdhc] using ADMA 64-bit
+[    0.714069] No fsl,qman node
+[    0.719401] Freescale USDPAA process driver
+[    0.723589] fsl-usdpaa: no region found
+[    0.727468] Freescale USDPAA process IRQ driver
+[    0.733001] NET: Registered protocol family 10
+[    0.746830] NET: Registered protocol family 17
+[    0.751331] bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+[    0.765124] 8021q: 802.1Q VLAN Support v1.8
+[    0.776339] fsl_generic: FSL DPAA Generic Ethernet driver
+[    0.841657] EXT4-fs (mtdblock5): mounted filesystem without journal. Opts: (null)
+[    0.849357] VFS: Mounted root (ext4 filesystem) readonly on device 31:5.
+[    0.858362] Freeing unused kernel memory: 256K (ffffffc000748000 - ffffffc000788000)
+[    0.866173] Freeing alternatives memory: 48K (ffffffc000788000 - ffffffc000794000)
+[    1.091072] mmc1: MAN_BKOPS_EN bit is not set
+[    1.122205] mmc1: new high speed MMC card at address 0001
+[    1.136408] mmcblk0: mmc1:0001 P1XXXX 3.60 GiB
+[    1.145977] mmcblk0boot0: mmc1:0001 P1XXXX partition 1 2.00 MiB
+[    1.155946] mmcblk0boot1: mmc1:0001 P1XXXX partition 2 2.00 MiB
+[    1.171024] mmcblk0rpmb: mmc1:0001 P1XXXX partition 3 128 KiB
+[    1.481684] init: Console is alive
+[    1.748821] pps_core: LinuxPPS API ver. 1 registered
+[    1.753799] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    1.765195] PTP clock support registered
+[    1.978805] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
+[    1.984451] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 1
+[    1.992358] xhci-hcd xhci-hcd.0.auto: hcc params 0x0220f66d hci version 0x100 quirks 0x00010010
+[    2.001183] xhci-hcd xhci-hcd.0.auto: irq 22, io mem 0x02f00000
+[    2.007729] hub 1-0:1.0: USB hub found
+[    2.011597] hub 1-0:1.0: 1 port detected
+[    2.015713] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
+[    2.021253] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 2
+[    2.031109] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[    2.039720] hub 2-0:1.0: USB hub found
+[    2.043570] hub 2-0:1.0: 1 port detected
+[    2.070057] usbcore: registered new interface driver usb-storage
+[    2.086420] init: - preinit -
+[    2.372206] random: jshn: uninitialized urandom read (4 bytes read, 3 bits of entropy available)
+[    2.398321] random: jshn: uninitialized urandom read (4 bytes read, 3 bits of entropy available)
+Press the [f] key and hit [enter] to enter failsafe mode
+Press the [1], [2], [3] or [4] key and hit [enter] to select the debug level
+[    4.507766] mount_root: mounting /dev/root
+[    4.663790] random: nonblocking pool is initialized
+[    6.517589] EXT4-fs (mtdblock5): re-mounted. Opts: (null)
+[    6.524047] urandom-seed: Seed file not found (/etc/urandom.seed)
+[    6.616838] procd: - early -
+[    7.156375] procd: - ubus -
+[    7.230702] procd: - init -
+Please press Enter to activate this console.
+[    7.325530] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+[    7.331436] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[   33.822208] cbus_baseaddr: ffffff8000780000, ddr_baseaddr: ffffffc003400000, ddr_phys_baseaddr: 83400000, ddr_size: c00000
+[   33.833343] pfe_hw_init
+[   33.835788] CLASS version: 20
+[   33.838770] TMU version: 1011231
+[   33.841999] BMU1 version: 21
+[   33.844879] BMU2 version: 21
+[   33.847769] EGPI1 version: 50
+[   33.850736] EGPI2 version: 50
+[   33.853702] HGPI version: 50
+[   33.856590] GPT version: 0
+[   33.859296] HIF version: 10
+[   33.862089] HIF NOPCY version: 10
+[   33.865406] bmu_init(1) done
+[   33.868296] bmu_init(2) done
+[   33.873400] class_init() done
+[   33.886412] tmu_init() done
+[   33.889207] gpi_init(1) done
+[   33.892090] gpi_init(2) done
+[   33.894971] gpi_init(hif) done
+[   33.898037] bmu_enable(1) done
+[   33.901091] bmu_enable(2) done
+[   33.904146] pfe_hif_lib_init
+[   34.055963] pfe_hif_init
+[   34.060520] pfe_hif_alloc_descr
+[   34.063715] pfe_hif_init_buffers
+[   34.071695] pfe_firmware_init
+[   34.087669] pfe_load_elf
+[   34.092233] pe_load_ddr_section: load address(3fb0000) and elf file address(ffffff800009b000) rcvd
+[   34.125640] PFE binary version: pfe_ls1012a_00_3-3-g1fa4da1-dirty
+[   34.131754] pfe_firmware_init: class firmware loaded 0xa60 0xc3010000
+[   34.138212] pfe_load_elf
+[   34.141763] WARNING: PFE firmware binaries from incompatible version
+[   34.148136] pfe_firmware_init: tmu firmware loaded 0x200
+[   34.153476] pfe_ctrl_init
+[   34.234173] pfe_ctrl_init finished
+[   34.237597] pfe_eth_init
+[   34.243188] pfe_ctrl_timer
+[   34.259913] pfe_eth_mdio_init
+[   34.264151] libphy: Comcerto MDIO Bus: probed
+[   34.280964] pfe_phy_init interface 3
+[   34.295333] eth0: pfe_eth_open
+[   34.309551] hif_process_client_req: register client_id 0
+[   34.314883] pfe_hif_client_register
+[   34.320462] eth0: pfe_gemac_init
+[   34.366319] eth0: pfe_eth_init_one: created interface, baseaddr: ffffff8000980000
+[   34.387589] device eth0 entered promiscuous mode
+[   34.392830] br-lan: port 1(eth0) entered forwarding state
+[   34.398312] br-lan: port 1(eth0) entered forwarding state
+[   34.446273] pfe_phy_init interface 7
+[   34.526238] eth1: pfe_eth_init_one: created interface, baseaddr: ffffff80009a0000
+[   34.533810] pfe_debugfs_init
+[   36.395832] br-lan: port 1(eth0) entered forwarding state
+
+
+
+BusyBox v1.25.1 () built-in shell (ash)
+
+     _________
+    /        /\      _    ___ ___  ___
+   /  LE    /  \    | |  | __|   \| __|
+  /    DE  /    \   | |__| _|| |) | _|
+ /________/  LE  \  |____|___|___/|___|                      lede-project.org
+ \        \   DE /
+  \    LE  \    /  -----------------------------------------------------------
+   \  DE    \  /    Reboot (CURRENT, r1262+1184-a31dbf6)
+    \________\/    -----------------------------------------------------------
+
+=== WARNING! =====================================
+There is no root password defined on this device!
+Use the "passwd" command to set up a new password
+in order to prevent unauthorized SSH logins.
+--------------------------------------------------
+root@lede:/# uname -a
+Linux lede 4.4.36 #0 SMP Wed Dec 7 16:16:28 2016 aarch64 GNU/Linux
+root@lede:/# cat /proc/interrupts
+           CPU0
+  1:          0     GICv2  29 Edge      arch_timer
+  2:       5850     GICv2  30 Edge      arch_timer
+  9:       2340     GICv2  94 Level     mmc0
+ 10:        100     GICv2  97 Level     mmc1
+ 11:    3100292     GICv2 131 Level     1550000.quadspi
+ 13:          0     GICv2  88 Level     2180000.i2c
+ 14:        166     GICv2  86 Level     serial
+ 22:          0     GICv2  92 Level     xhci-hcd:usb1
+ 25:        213     GICv2 204 Level     pfe_hif
+ 27:          0       MSI   0 Edge      aerdrv
+IPI0:         0       Rescheduling interrupts
+IPI1:         0       Function call interrupts
+IPI2:         0       CPU stop interrupts
+IPI3:         0       Timer broadcast interrupts
+IPI4:         0       IRQ work interrupts
+Err:          0
+root@lede:/# ifconfig
+br-lan    Link encap:Ethernet  HWaddr 00:1A:2B:3C:4D:5E
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::21a:2bff:fe3c:4d5e/64 Scope:Link
+          inet6 addr: fdf9:35c:58c9::1/60 Scope:Global
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:240 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:20292 (19.8 KiB)  TX bytes:896 (896.0 B)
+
+eth0      Link encap:Ethernet  HWaddr 00:1A:2B:3C:4D:5E
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:240 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:9 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:23652 (23.0 KiB)  TX bytes:942 (942.0 B)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:24 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:24 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1
+          RX bytes:1896 (1.8 KiB)  TX bytes:1896 (1.8 KiB)
+
+root@lede:/# ifconfig br-lan 10.193.20.244
+root@lede:/# ping 10.193.20.106
+PING 10.193.20.106 (10.193.20.106): 56 data bytes
+64 bytes from 10.193.20.106: seq=0 ttl=64 time=1.144 ms
+64 bytes from 10.193.20.106: seq=1 ttl=64 time=0.193 ms
+64 bytes from 10.193.20.106: seq=2 ttl=64 time=0.204 ms
+64 bytes from 10.193.20.106: seq=3 ttl=64 time=0.193 ms
+^C
+--- 10.193.20.106 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.193/0.433/1.144 ms
+root@lede:/#
+root@lede:/# ifconfig
+br-lan    Link encap:Ethernet  HWaddr 00:1A:2B:3C:4D:5E
+          inet addr:10.193.20.244  Bcast:10.255.255.255  Mask:255.0.0.0
+          inet6 addr: fe80::21a:2bff:fe3c:4d5e/64 Scope:Link
+          inet6 addr: fdf9:35c:58c9::1/60 Scope:Global
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:419 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:18 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:33686 (32.8 KiB)  TX bytes:1716 (1.6 KiB)
+
+eth0      Link encap:Ethernet  HWaddr 00:1A:2B:3C:4D:5E
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:558 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:20 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:51650 (50.4 KiB)  TX bytes:1848 (1.8 KiB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:40 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:40 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1
+          RX bytes:3160 (3.0 KiB)  TX bytes:3160 (3.0 KiB)
+
+root@lede:/#
+root@lede:/# i2cdetect 0
+i2cdetect: WARNING! This program can confuse your I2C bus
+Continue? [y/N] y
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- 08 09 -- -- -- -- -- --
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- 1e --
+20: 20 -- -- -- 24 25 26 -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+40: 40 -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+70: -- -- -- -- -- -- -- --
+root@lede:/# i2cdump 0 0x26 b
+i2cdump: WARNING! This program can confuse your I2C bus
+Continue? [y/N] y
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef
+00: ff ff ff ff 00 00 ff ff XX XX XX XX XX XX XX XX    ........XXXXXXXX
+10: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+20: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+30: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+40: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+50: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+60: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+70: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+80: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+90: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+a0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+b0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+c0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+d0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+e0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+f0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+root@lede:/# i2cdump 0 0x24 b
+i2cdump: WARNING! This program can confuse your I2C bus
+Continue? [y/N] y
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef
+00: 78 dc ff f4 00 00 ff fc XX XX XX XX XX XX XX XX    x?.?...?XXXXXXXX
+10: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+20: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+30: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+40: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+50: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+60: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+70: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+80: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+90: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+a0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+b0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+c0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+d0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+e0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+f0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+root@lede:/# i2cdump 0 0x08 b
+i2cdump: WARNING! This program can confuse your I2C bus
+Continue? [y/N]
+i2cdump: aborting
+root@lede:/# i2cdump 0 0x08 b
+i2cdump: WARNING! This program can confuse your I2C bus
+Continue? [y/N] y
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef
+00: 30 00 00 11 00 01 3f 01 00 1b 00 00 00 00 04 c5    0..?.???.?....??
+10: 04 00 3f 00 00 00 00 00 00 00 00 10 00 00 00 00    ?.?........?....
+20: 08 08 08 08 04 00 00 00 00 00 00 00 00 00 08 08    ?????.........??
+30: 08 08 34 00 00 06 06 06 08 14 00 00 09 09 09 08    ??4..?????..????
+40: 24 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    $...............
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+60: 00 00 00 00 00 00 00 00 00 00 10 06 00 1f 13 13    ..........??.???
+70: 1f 17 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ??..............
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/#
+root@lede:/# [  132.399363] mmc0: new high speed SD card at address b368
+[  132.405384] mmcblk1: mmc0:b368 SMI   1.87 GiB
+[  132.411544]  mmcblk1: p1 p2 p3 p4
+
+root@lede:/# fdisk -l /dev/mmcblk1
+
+Disk /dev/mmcblk1: 2006 MB, 2006974464 bytes
+62 heads, 62 sectors/track, 1019 cylinders
+Units = cylinders of 3844 * 512 = 1968128 bytes
+
+        Device Boot      Start         End      Blocks  Id System
+/dev/mmcblk1p1               1         250      480469   b Win95 FAT32
+/dev/mmcblk1p2             251         500      480500  83 Linux
+/dev/mmcblk1p3             501         750      480500  83 Linux
+/dev/mmcblk1p4             751        1000      480500  83 Linux
+root@lede:/#
+root@lede:/# ls -l /mnt
+root@lede:/# mount /dev/mmcblk1p3 /mnt
+[  158.482555] EXT4-fs (mmcblk1p3): couldn't mount as ext3 due to feature incompatibilities
+[  158.492002] EXT4-fs (mmcblk1p3): mounting ext2 file system using the ext4 subsystem
+[  158.506295] EXT4-fs (mmcblk1p3): warning: checktime reached, running e2fsck is recommended
+[  158.519153] EXT4-fs (mmcblk1p3): mounted filesystem without journal. Opts: (null)
+root@lede:/# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                22036     11928      9640  55% /
+tmpfs                   471040        32    471008   0% /tmp
+tmpfs                      512         0       512   0% /dev
+/dev/mmcblk1p3          465309      2318    438966   1% /mnt
+root@lede:/# ls -l /mnt
+drwx------    2 root     root         12288 Feb 14  2012 lost+found
+root@lede:/# mkdir /mnt/aaa
+root@lede:/# ls -l /mnt
+drwxr-xr-x    2 root     root          1024 Dec  7 16:19 aaa
+drwx------    2 root     root         12288 Feb 14  2012 lost+found
+root@lede:/# umount /mnt
+root@lede:/# ls -l /mnt
+root@lede:/# mount /dev/mmcblk1p3 /mnt
+[  187.311480] EXT4-fs (mmcblk1p3): couldn't mount as ext3 due to feature incompatibilities
+[  187.320812] EXT4-fs (mmcblk1p3): mounting ext2 file system using the ext4 subsystem
+[  187.334842] EXT4-fs (mmcblk1p3): warning: checktime reached, running e2fsck is recommended
+[  187.352827] EXT4-fs (mmcblk1p3): mounted filesystem without journal. Opts: (null)
+root@lede:/# ls -l /mnt
+drwxr-xr-x    2 root     root          1024 Dec  7 16:19 aaa
+drwx------    2 root     root         12288 Feb 14  2012 lost+found
+root@lede:/# umount /mnt
+root@lede:/#
+root@lede:/#
+root@lede:/# [  197.415954] mmc0: card b368 removed
+[  202.315900] usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+[  202.337817] usb-storage 2-1:1.0: USB Mass Storage device detected
+[  202.344137] scsi host0: usb-storage 2-1:1.0
+[  203.346350] scsi 0:0:0:0: Direct-Access     SanDisk  Ultra Fit        1.00 PQ: 0 ANSI: 6
+[  203.355703] sd 0:0:0:0: [sda] 62566488 512-byte logical blocks: (32.0 GB/29.8 GiB)
+[  203.364883] sd 0:0:0:0: [sda] Write Protect is off
+[  203.370184] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+[  203.413016]  sda: sda1
+[  203.417510] sd 0:0:0:0: [sda] Attached SCSI removable disk
+
+root@lede:/#
+root@lede:/# mount /dev/sda1 /mnt
+[  216.670368] FAT-fs (sda1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+root@lede:/# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                22036     11928      9640  55% /
+tmpfs                   471040        32    471008   0% /tmp
+tmpfs                      512         0       512   0% /dev
+/dev/sda1              8376320   5282768   3093552  63% /mnt
+root@lede:/# ls -l /mnt
+-rwxr-xr-x    1 root     root     2633608009 Jun 16 01:40 CW_CW4NET_v2016.01_Win_b160115_Offline.exe
+-rwxr-xr-x    1 root     root      12180480 Sep  1 19:07 Image
+drwxr-xr-x    3 root     root          8192 Nov  9 15:43 Serial_driver
+-rwxr-xr-x    1 root     root        614400 May 30  2016 Serial_driver.tar
+-rwxr-xr-x    1 root     root     2564476928 Nov 30 11:28 Windows_7_32-bit_Professional_x86.iso
+drwxr-xr-x    2 root     root          8192 Dec  7 16:26 aaa
+-rwxr-xr-x    1 root     root           189 Sep  1 19:07 boot.nsh
+-rwxr-xr-x    1 root     root         14269 Aug  4 18:21 cw_license.docx
+-rwxr-xr-x    1 root     root      25675850 Sep  1 19:08 fsl-image-core-ls2080ardb.ext2.gz
+-rwxr-xr-x    1 root     root         14755 Sep  1 19:07 fsl-ls2080a-rdb.dtb
+-rwxr-xr-x    1 root     root          3019 Oct 10 15:08 license.dat
+root@lede:/# mkdir /mnt/bbb
+root@lede:/# ls -l /mnt
+-rwxr-xr-x    1 root     root     2633608009 Jun 16 01:40 CW_CW4NET_v2016.01_Win_b160115_Offline.exe
+-rwxr-xr-x    1 root     root      12180480 Sep  1 19:07 Image
+drwxr-xr-x    3 root     root          8192 Nov  9 15:43 Serial_driver
+-rwxr-xr-x    1 root     root        614400 May 30  2016 Serial_driver.tar
+-rwxr-xr-x    1 root     root     2564476928 Nov 30 11:28 Windows_7_32-bit_Professional_x86.iso
+drwxr-xr-x    2 root     root          8192 Dec  7 16:26 aaa
+drwxr-xr-x    2 root     root          8192 Dec  7 16:20 bbb
+-rwxr-xr-x    1 root     root           189 Sep  1 19:07 boot.nsh
+-rwxr-xr-x    1 root     root         14269 Aug  4 18:21 cw_license.docx
+-rwxr-xr-x    1 root     root      25675850 Sep  1 19:08 fsl-image-core-ls2080ardb.ext2.gz
+-rwxr-xr-x    1 root     root         14755 Sep  1 19:07 fsl-ls2080a-rdb.dtb
+-rwxr-xr-x    1 root     root          3019 Oct 10 15:08 license.dat
+root@lede:/# umount /mnt
+root@lede:/# ls -l /mnt
+root@lede:/# mount /dev/sda1 /mnt
+[  239.220336] FAT-fs (sda1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+root@lede:/# ls -l /mnt
+-rwxr-xr-x    1 root     root     2633608009 Jun 16 01:40 CW_CW4NET_v2016.01_Win_b160115_Offline.exe
+-rwxr-xr-x    1 root     root      12180480 Sep  1 19:07 Image
+drwxr-xr-x    3 root     root          8192 Nov  9 15:43 Serial_driver
+-rwxr-xr-x    1 root     root        614400 May 30  2016 Serial_driver.tar
+-rwxr-xr-x    1 root     root     2564476928 Nov 30 11:28 Windows_7_32-bit_Professional_x86.iso
+drwxr-xr-x    2 root     root          8192 Dec  7 16:26 aaa
+drwxr-xr-x    2 root     root          8192 Dec  7 16:20 bbb
+-rwxr-xr-x    1 root     root           189 Sep  1 19:07 boot.nsh
+-rwxr-xr-x    1 root     root         14269 Aug  4 18:21 cw_license.docx
+-rwxr-xr-x    1 root     root      25675850 Sep  1 19:08 fsl-image-core-ls2080ardb.ext2.gz
+-rwxr-xr-x    1 root     root         14755 Sep  1 19:07 fsl-ls2080a-rdb.dtb
+-rwxr-xr-x    1 root     root          3019 Oct 10 15:08 license.dat
+root@lede:/# umount /mnt
+root@lede:/#
+root@lede:/# [  249.265929] usb 2-1: reset SuperSpeed USB device number 2 using xhci-hcd
+[  250.125906] usb 2-1: Device not responding to setup address.
+[  250.335888] usb 2-1: Device not responding to setup address.
+[  250.547492] usb 2-1: device not accepting address 2, error -71
+[  250.605926] usb 2-1: USB disconnect, device number 2
+
+root@lede:/#
+root@lede:/# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                22036     11928      9640  55% /
+tmpfs                   471040        32    471008   0% /tmp
+tmpfs                      512         0       512   0% /dev
+root@lede:/# ls -l
+drwxr-xr-x    2 root     root          4096 Dec  7 16:34 bin
+drwxr-xr-x    4 root     root          1180 Dec  7 16:20 dev
+drwxr-xr-x   16 root     root          4096 Dec  7 16:16 etc
+drwxrwxr-x   10 root     root          4096 Dec  7 16:34 lib
+lrwxrwxrwx    1 root     root             3 Dec  7 16:34 lib64 -> lib
+drwx------    2 root     root          4096 Jan  1  1970 lost+found
+drwxr-xr-x    2 root     root          4096 Dec  7 16:16 mnt
+drwxr-xr-x    2 root     root          4096 Dec  7 16:16 overlay
+dr-xr-xr-x   69 root     root             0 Jan  1  1970 proc
+drwxrwxr-x    2 root     root          4096 Dec  7 16:34 rom
+drwxr-xr-x    2 root     root          4096 Dec  7 16:16 root
+drwxr-xr-x    2 root     root          4096 Dec  7 16:34 sbin
+dr-xr-xr-x   11 root     root             0 Jan  1  1970 sys
+drwxrwxrwt   11 root     root           320 Dec  7 16:17 tmp
+drwxr-xr-x    7 root     root          4096 Dec  7 16:16 usr
+lrwxrwxrwx    1 root     root             4 Dec  7 16:34 var -> /tmp
+drwxr-xr-x    2 root     root          4096 Dec  7 16:16 www
+root@lede:/# reboot
+root@lede:/# [  269.933757] br-lan: port 1(eth0) entered disabled state
+[  269.945738] device eth0 left promiscuous mode
+[  269.950215] br-lan: port 1(eth0) entered disabled state
+[  269.959534] eth0: pfe_eth_shutdown
+[  269.995851] hif_lib_client_unregister : client: ffffffc039e6a788, client_id: 0, txQ_depth: 2048, rxQ_depth: 256
+[  270.005986] hif_process_client_req: unregister client_id 0
+[  270.011478] pfe_hif_client_unregister
+[  270.015466] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[  273.138101] EXT4-fs (mtdblock5): re-mounted. Opts: (null)
+[  278.717969] reboot: Restarting system
+
+
+U-Boot 2016.09 (Dec 07 2016 - 16:16:28 +0000)
+
+SoC:  LS1012AE Rev1.0 (0x87040010)
+Clock Configuration:
+       CPU0(A53):800  MHz
+       Bus:      250  MHz  DDR:      1000 MT/s
+Reset Configuration Word (RCW):
+       00000000: 08000008 00000000 00000000 00000000
+       00000010: 35080000 c000000c 40000000 00001800
+       00000020: 00000000 00000000 00000000 00014571
+       00000030: 00000000 18c2a120 00000096 00000000
+I2C:   ready
+DRAM:  1022 MiB
+Using SERDES1 Protocol: 13576 (0x3508)
+MMC:   FSL_SDHC: 0
+SF: Detected S25FS512S with page size 256 Bytes, erase size 256 KiB, total 64 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Model: LS1012A RDB Board
+Board: LS1012ARDB Version: unknown, boot from QSPI: bank1
+SATA link 0 timeout.
+AHCI 0001.0301 32 slots 1 ports 6 Gbps 0x1 impl SATA mode
+flags: 64bit ncq pm clo only pmp fbss pio slum part ccc apst
+Found 0 device(s).
+SCSI:  Net:   cbus_baseaddr: 0000000004000000, ddr_baseaddr: 0000000083800000, ddr_phys_baseaddr: 03800000
+class init complete
+tmu init complete
+bmu1 init: done
+bmu2 init: done
+GPI1 init complete
+GPI2 init complete
+HGPI init complete
+hif_tx_desc_init: Tx desc_base: 0000000083e40400, base_pa: 03e40400, desc_count: 64
+hif_rx_desc_init: Rx desc base: 0000000083e40000, base_pa: 03e40000, desc_count: 64
+HIF tx desc: base_va: 0000000083e40400, base_pa: 03e40400
+HIF init complete
+bmu1 enabled
+bmu2 enabled
+pfe_hw_init: done
+pfe_firmware_init
+pfe_load_elf: no of sections: 13
+pfe_firmware_init: class firmware loaded
+pfe_load_elf: no of sections: 10
+pfe_firmware_init: tmu firmware loaded
+ls1012a_configure_serdes 0
+PCIe0: pcie@3400000 Root Complex: no link
+pfe_eth0
+Warning: pfe_eth0 (eth0) using random MAC address - fe:77:14:3e:cc:f0
+, pfe_eth1
+Warning: pfe_eth1 (eth1) using random MAC address - 1a:70:57:7b:33:64
+
+Hit any key to stop autoboot:  0
+=>
